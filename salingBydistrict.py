@@ -1,4 +1,4 @@
-import pymysql, re
+import pymysql,re
 import areaInfo as info
 import pandas as pd
 import connectTodb as db_conn
@@ -6,8 +6,9 @@ import connectTodb as db_conn
 cur = db_conn.cur
 
 
+# 按地区：挂牌日期-总价，均价
 def salingHouseInfo(countyName, districtName):
-    # 成交日期列表
+    # 挂牌日期列表
     list_month = []
     sql = "SELECT DISTINCT hangoutTime1 FROM housesonsale_table"
     try:
@@ -21,17 +22,12 @@ def salingHouseInfo(countyName, districtName):
     list_month = list(list_month)
     list_month.sort()
 
-    print(list_month)
-
     district_label = ""
     for info_key in info.area_info.keys():
         if info.area_info[info_key] == districtName:
             district_label = info_key
-    print(district_label)
 
-    sql = "SELECT hangoutTime1,price1,unitPrice1 FROM housesonsale_table WHERE housingEstate LIKE '%{}'".format(
-        district_label)
-    print(sql)
+    sql = "SELECT hangoutTime1,price1,unitPrice1 FROM housesonsale_table WHERE housingEstate LIKE '%{}'".format(district_label)
     try:
         cur.execute(sql)
     except:
@@ -61,5 +57,33 @@ def salingHouseInfo(countyName, districtName):
     list_return.append(["出售时间", "总价", "均价"])
     for i in range(0, len(list_month)):
         list_return.append([list_month[i], value1[i], value2[i]])
+    print(list_return)
+    return list_return
+
+
+# 按地区：某地区各小区的信息
+def salingHouseChart2(countyName,districtName):
+    district_label = ""
+    for info_key in info.area_info.keys():
+        if  info.area_info[info_key]== districtName:
+            district_label = info_key
+
+    sql = "SELECT communityName1,AVG(price1),AVG(unitPrice1),AVG(houseArea1), COUNT(communityName1) FROM housesonsale_table " \
+          "WHERE housingEstate LIKE '%{}' GROUP BY communityName1".format(district_label)
+    try:
+        cur.execute(sql)
+    except:
+        print("查询失败")
+    list_return = []
+    for element in cur:
+        dic = {}
+        dic['communityName'] = element[0]
+        dic['countyName'] = countyName
+        dic['districtName'] = districtName
+        dic['avgprice'] = str(round(element[1],2))+ "万元"
+        dic['avgunitprice'] = str(round(element[2],2)) + "元/平方米"
+        dic['avgarea'] = str(round(element[3],2)) + "平方米"
+        dic['num'] = str(element[4]) + "套"
+        list_return.append(dic)
     print(list_return)
     return list_return
