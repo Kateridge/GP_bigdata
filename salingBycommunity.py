@@ -196,6 +196,7 @@ def salingHouseFaced1(communityName):
     print(list_return)
     return list_return
 
+
 # 按小区：在售房屋信息表
 def salingHouseChart(communityName):
     sql = "SELECT houseName1, housingHref1, houseArea1, houseingModel1, price1,unitPrice1,decorateStatus1,hangoutTime1 " \
@@ -218,4 +219,3 @@ def salingHouseChart(communityName):
         list_return.append(dic)
     print(list_return)
     return list_return
-
