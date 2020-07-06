@@ -36,7 +36,8 @@ def salingHouseInfo(countyName, districtName):
     price = []
     unitprice = []
     for element in cur:
-        result = re.findall("(.*?)\-(.*?)\-(.*?)", element[0])
+        if element[0] != '不存在该项':
+            result = re.findall("(.*?)\-(.*?)\-(.*?)", element[0])
         hangouttime.append(str(result[0][0] + '.' + result[0][1]))
         price.append(round(float(element[1]), 2))
         unitprice.append(round(float(element[2]), 2))
@@ -67,7 +68,6 @@ def salingHouseChart2(countyName,districtName):
     for info_key in info.area_info.keys():
         if  info.area_info[info_key]== districtName:
             district_label = info_key
-
     sql = "SELECT communityName1,AVG(price1),AVG(unitPrice1),AVG(houseArea1), COUNT(communityName1) FROM housesonsale_table " \
           "WHERE housingEstate LIKE '%{}' GROUP BY communityName1".format(district_label)
     try:

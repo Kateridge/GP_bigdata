@@ -200,6 +200,8 @@ def jump_community():
 @app.route('/onsale_bydistrict_analyze.html', methods=['POST'])
 def jump_area():
     para = request.form
+    print(para["district_name"])
+    print(para["area_name"])
     data = saling2.salingHouseInfo(para['district_name'], para['area_name'])
     data_table = saling2.salingHouseChart2(para['district_name'], para['area_name'])
     return render_template('onsale_bydistrict_analyze.html', data=data, data_table=data_table)

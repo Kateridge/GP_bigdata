@@ -197,6 +197,78 @@ def salingHouseFaced1(communityName):
     return list_return
 
 
+#  7.挂牌时间-(总价，均价)（分两个子函数，使用子函数）
+def salingHangoutTime(communityName):
+    # 成交日期列表
+    list_month = []
+    sql = "SELECT DISTINCT hangoutTime1 FROM housesonsale_table"
+    try:
+        cur.execute(sql)
+    except:
+        print("查询失败")
+    for element in cur:
+        if element[0] != '不存在该项':
+            list_month.append(re.findall("(.*?)\-", element[0])[0] + '.' + re.findall("(.*?)\-", element[0])[1])
+    list_month = set(list_month)
+    list_month = list(list_month)
+    list_month.sort()
+
+    # 查询语句
+    sql = "SELECT hangoutTime1, AVG(price1) , AVG(unitPrice1)  " \
+          "FROM housesonsale_table WHERE communityName1 = '{}' GROUP BY hangoutTime1".format(communityName)
+    try:
+        cur.execute(sql)
+    except:
+        print("查询失败")
+
+    hangouttime = []
+    price = []
+    unitprice = []
+    for element in cur:
+        result = re.findall("(.*?)\-(.*?)\-(.*?)", element[0])
+        hangouttime.append(result[0][0] + '.' + result[0][1])
+        price.append(round(float(element[1]), 2))
+        unitprice.append(round(float(element[2]), 2))
+
+
+    dict = {'hangouttime': hangouttime, 'price': price, 'unitprice': unitprice}
+    dtf = pd.DataFrame(dict)
+    dtf1 = dtf.groupby('hangouttime').mean().reset_index()
+    dtf1 = dtf1.sort_values(axis=0, by=['hangouttime'])
+
+    value1 = [0] * len(list_month)
+    value2 = [0] * len(list_month)
+    for row in dtf1.iterrows():
+        index = list_month.index(row[1][0])
+        value1[index] = round(row[1][1], 2)
+        value2[index] = round(row[1][2], 2)
+
+    list_return = []
+    list_return.append(["挂牌时间", "总价", "均价"])
+    for i in range(0, len(list_month)):
+        list_return.append(
+            [list_month[i], value1[i], value2[i]])
+    return list_return
+
+# 7.1挂牌时间-总价柱形图
+def hangoutTime_price(communityName):
+    L = salingHangoutTime(communityName)
+    list_return = []
+    for element in L:
+        list_return.append([element[0], element[1]])
+    print(list_return)
+    return list_return
+
+# 7.2挂牌时间-均价柱形图
+def hangoutTime_unitPrice(communityName):
+    L = salingHangoutTime(communityName)
+    list_return = []
+    for element in L:
+        list_return.append([element[0], element[2]])
+    print(list_return)
+    return list_return
+
+
 # 按小区：在售房屋信息表
 def salingHouseChart(communityName):
     sql = "SELECT houseName1, housingHref1, houseArea1, houseingModel1, price1,unitPrice1,decorateStatus1,hangoutTime1 " \
@@ -219,3 +291,7 @@ def salingHouseChart(communityName):
         list_return.append(dic)
     print(list_return)
     return list_return
+
+salingHangoutTime('华南城巴南华府')
+hangoutTime_price('华南城巴南华府')
+hangoutTime_unitPrice('华南城巴南华府')

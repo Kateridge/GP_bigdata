@@ -45,7 +45,11 @@ def saledDealTime(communityName):
         dealtime.append(result[0][0] + '.' + result[0][1])
         dealunitprice.append(round(float(element[1]), 2))
         dealprice.append(round(float(element[2]), 2))
-        hangoutprice.append(round(float(element[3]), 2))
+        if element[3] == -1:
+            print(element)
+            hangoutprice.append(round(float(element[2]), 2))
+        else:
+            hangoutprice.append(round(float(element[3]), 2))
         dealcycle.append(round(float(element[4]), 2))
         adjustpricetimes.append(round(float(element[5]), 2))
         visittimes.append(round(float(element[6]), 2))
@@ -120,7 +124,11 @@ def saledDecorateStatus(communityName):
         decoratestatus.append(element[0].replace(" ", ""))
         dealunitprice.append(round(float(element[1]), 2))
         dealprice.append(round(float(element[2]), 2))
-        hangoutprice.append(round(float(element[3]), 2))
+        if element[3] == -1:
+            print(element)
+            hangoutprice.append(round(float(element[2]), 2))
+        else:
+            hangoutprice.append(round(float(element[3]), 2))
         num.append(round(float(element[4]), 2))
         dealcycle.append(round(float(element[5]), 2))
         adjustpricetimes.append(round(float(element[6]), 2))
@@ -203,7 +211,11 @@ def saledHousingModel(communityName):
         housemodel.append(element[0].replace(" ", ""))
         dealunitprice.append(round(float(element[1]), 2))
         dealprice.append(round(float(element[2]), 2))
-        hangoutprice.append(round(float(element[3]), 2))
+        if element[3] == -1:
+            print(element)
+            hangoutprice.append(round(float(element[2]), 2))
+        else:
+            hangoutprice.append(round(float(element[3]), 2))
         num.append(round(float(element[4]), 2))
         dealcycle.append(round(float(element[5]), 2))
         adjustpricetimes.append(round(float(element[6]), 2))
@@ -273,7 +285,11 @@ def saledIsSubway(communityName):
         subway.append(element[0])
         dealunitprice.append(round(float(element[1]), 2))
         dealprice.append(round(float(element[2]), 2))
-        hangoutprice.append(round(float(element[3]), 2))
+        if element[3] == -1:
+            print(element)
+            hangoutprice.append(round(float(element[2]), 2))
+        else:
+            hangoutprice.append(round(float(element[3]), 2))
         num.append(round(float(element[4]), 2))
         dealcycle.append(round(float(element[5]), 2))
         adjustpricetimes.append(round(float(element[6]), 2))
