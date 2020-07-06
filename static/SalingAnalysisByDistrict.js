@@ -25,11 +25,12 @@ var option1 = {
     series: [
         {
             name:'总价',
-            type: 'line'
+            type: 'bar'
         },
         {
             name:'均价',
-            type: 'line'
+            type: 'bar',
+            yAxisIndex: 1,
         }
     ],
 };

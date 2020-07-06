@@ -8,7 +8,7 @@
 		<meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 		<link rel="shortcut icon" href="img/favicon.html">
 
-		<title>小区周边房屋</title>
+		<title>地区分析</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 		<!-- Custom styles for this template -->
 		<link href="../static/css/style.css" rel="stylesheet">
 		<link href="../static/css/style-responsive.css" rel="stylesheet" />
-		
+
 		<!-- 引入 echarts.js -->
 		<script src="../static/js/echarts.min.js"></script>
 
@@ -51,7 +51,7 @@
                           <span>数据分析平台首页</span>
                       </a>
                   </li>
-						<li class="sub-menu">
+						<li class="sub-menu active">
 							<a href="javascript:;" class="">
 								<i class="icon-th"></i>
 								<span>成交房屋信息</span>
@@ -60,11 +60,11 @@
 							<ul class="sub">
 								<li><a class="" href="history_price.html">房价分析</a></li>
 								<li><a class="" href="history_source.html">房源分析</a></li>
-                                <li><a class="" href="history_district.html">地区分析</a></li>
+                                <li class="active"><a class="" href="history_district.html">地区分析</a></li>
 							</ul>
 						</li>
 
-						<li class="sub-menu active">
+						<li class="sub-menu">
 							<a href="javascript:;" class="">
 								<i class="icon-glass"></i>
 								<span>在售房屋信息</span>
@@ -82,10 +82,15 @@
 				</div>
 			</aside>
 			<!--sidebar end-->
+
+
 			<!--main content start-->
 			<section id="main-content">
 				<header class="tab-head">
 					<ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#morris" class="panel-heading">历史成交房屋信息-地区分析</a>
+                        </li>
 					</ul>
 				</header>
 				<section class="wrapper tab-container">
@@ -94,29 +99,48 @@
 						<div class="tab-pane active" id="morris">
 
 							<div class="row">
+                                <div class="col-sm-6">
 
 
+                                    <section class="panel">
+                                        <header class="panel-heading">
+                                            成交时间——均价
+                                        </header>
+                                        <div class="panel-body">
+                                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                        <center>
+                                            <div id="main" style="width: 600px;height:400px;"class="graph"></div>
+                                        </center>
+                                            <script type="text/javascript" charset="utf-8">
+                                                    var data = {{ data|safe }};
+                                                </script>
+                                            <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
+                                            </div>
+                                    </section>
+                                </div>
 
-								<section class="panel">
-									<header class="panel-heading">
-										<center>地区在售房源分析</center>
-									</header>
-									<div class="panel-body">
-									<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-									<center>
-									    <div id="graph_display" style="width: 1200px;height:500px;"class="graph"></div>
-									</center>
-									    <script type="text/javascript" charset="utf-8">
-                                                var data = {{ data|safe }};
-                                            </script>
-                                        <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
-										</div>
-								</section>
-								
-								
+                                <div class="col-sm-6">
+
+
+                                    <section class="panel">
+                                        <header class="panel-heading">
+                                            成交时间——总价
+                                        </header>
+                                        <div class="panel-body">
+                                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                        <center>
+                                            <div id="main" style="width: 600px;height:400px;"class="graph"></div>
+                                        </center>
+                                            <script type="text/javascript" charset="utf-8">
+                                                    var data = {{ data|safe }};
+                                                </script>
+                                            <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
+                                            </div>
+                                    </section>
+                                </div>
 							</div>
-							
-							
+
+
 							<!-- page start-->
 							<div class="row">
 								<div class="col-lg-12">
@@ -130,10 +154,10 @@
                                                     <th>小区名称</th>
                                                     <th>区县</th>
                                                     <th>所属区域</th>
-                                                    <th>挂牌总价平均</th>
-                                                    <th>挂牌均价平均</th>
+                                                    <th>成交总价平均</th>
+                                                    <th>成交均价平均</th>
                                                     <th>平均面积</th>
-                                                    <th>在售房屋总数</th>
+                                                    <th>成交房屋总数</th>
                                                     <!--
 													<th style="width:8px;"></th>
 
@@ -165,7 +189,7 @@
 							<!-- page end-->
 						</div>
 
-					</div>
+                            </div>
 					<!-- page end-->
 				</section>
 			</section>
@@ -191,19 +215,19 @@
 		<script src="../static/js/morris-script.js"></script>
 		<script src="../static/js/all-chartjs.js"></script>
 		<script src="../static/js/sparkline-chart.js"></script>
-		
-		
+
+
 		<script type="text/javascript" src="../static/assets/data-tables/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="../static/assets/data-tables/DT_bootstrap.js"></script>
-		
-		
+
+
 		<!--script for this page only-->
 		<script src="../static/js/dynamic-table.js"></script>
 		<!-- js placed at the end of the document so the pages load faster -->
 
-	
 
-		
+
+
 		<script src="../static/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 

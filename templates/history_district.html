@@ -8,7 +8,7 @@
 		<meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 		<link rel="shortcut icon" href="img/favicon.html">
 
-		<title>小区周边房屋</title>
+		<title>地区分析</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 		<!-- Custom styles for this template -->
 		<link href="../static/css/style.css" rel="stylesheet">
 		<link href="../static/css/style-responsive.css" rel="stylesheet" />
-		
+
 		<link href="../static/css/select2.min.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
@@ -54,7 +54,7 @@
                           <span>数据分析平台首页</span>
                       </a>
                   </li>
-						<li class="sub-menu">
+						<li class="sub-menu active">
 							<a href="javascript:;" class="">
 								<i class="icon-th"></i>
 								<span>成交房屋信息</span>
@@ -63,11 +63,11 @@
 							<ul class="sub">
 								<li><a class="" href="history_price.html">房价分析</a></li>
 								<li><a class="" href="history_source.html">房源分析</a></li>
-                                <li><a class="" href="history_district.html">地区分析</a></li>
+                                <li class="active"><a class="" href="history_district.html">地区分析</a></li>
 							</ul>
 						</li>
 
-						<li class="sub-menu active">
+						<li class="sub-menu">
 							<a href="javascript:;" class="">
 								<i class="icon-glass"></i>
 								<span>在售房屋信息</span>
@@ -75,7 +75,7 @@
 							</a>
 							<ul class="sub">
 								<li><a class="" href="onsale_bycommunity.html">各小区房屋信息</a></li>
-								<li class="active"><a class="" href="onsale_bydistrict.html">各地区房屋信息</a></li>
+								<li><a class="" href="onsale_bydistrict.html">各地区房屋信息</a></li>
 
 							</ul>
 						</li>
@@ -89,8 +89,8 @@
 			<section id="main-content">
 				<section class="wrapper">
 					<div class="container">
-						<form class="form-signin" action="onsale_bydistrict_analyze.html" method="post">
-							<h2 class="form-signin-heading">在售房屋信息-各地区房屋</h2>
+						<form class="form-signin" action="history_district_analyze.html" method="get">
+							<h2 class="form-signin-heading">成交房屋信息-各地区房屋</h2>
 							<div class="login-wrap">
                                 <label for="diatrict_value">区县选择</label>
 								<select class="form-control" id="county" name="district_name">
@@ -165,9 +165,9 @@
 			second.options.add(new Option("五里店", "五里店"));
 			second.options.add(new Option("鱼嘴", "鱼嘴"));
 		}
-	
+
 		if(first.selectedIndex == 2)
-		{								            
+		{
 			second.options.add(new Option("北环", "北环", false, true));  // 默认选中区
 			second.options.add(new Option("财富中心", "财富中心"));
 			second.options.add(new Option("翠云", "翠云"));
@@ -176,21 +176,21 @@
 			second.options.add(new Option("空港新城", "空港新城"));
 			second.options.add(new Option("两路", "两路"));
 			second.options.add(new Option("礼嘉", "礼嘉"));
-			second.options.add(new Option("龙溪", "龙溪"));																					
+			second.options.add(new Option("龙溪", "龙溪"));
 			second.options.add(new Option("汽博中心", "汽博中心"));
 			second.options.add(new Option("人和", "人和"));
-			
+
 			second.options.add(new Option("双碑", "双碑"));
-			
+
 			second.options.add(new Option("新牌坊", "新牌坊"));
 			second.options.add(new Option("园博园", "园博园"));
 			second.options.add(new Option("鸳鸯", "鸳鸯"));
 			second.options.add(new Option("悦来", "悦来"));
 			second.options.add(new Option("照母山", "照母山"));
 			second.options.add(new Option("中央公园", "中央公园"));
-			
+
 		}
-		
+
 		if(first.selectedIndex == 3)
 		{
 			second.options.add(new Option("八公里", "八公里", false, true));  // 默认选中区
@@ -201,11 +201,11 @@
 			second.options.add(new Option("南滨路", "南滨路"));
 			second.options.add(new Option("南坪", "南坪"));
 			second.options.add(new Option("南山", "南山"));
-			second.options.add(new Option("七公里", "七公里"));																					
+			second.options.add(new Option("七公里", "七公里"));
 			second.options.add(new Option("融侨半岛", "融侨半岛"));
 			second.options.add(new Option("四公里", "四公里"));
 		}
-		
+
 		if(first.selectedIndex == 4)
 		{
 			second.options.add(new Option("界石", "界石", false, true));  // 默认选中区
@@ -215,7 +215,7 @@
 			second.options.add(new Option("融汇半岛", "融汇半岛"));
 			second.options.add(new Option("鱼洞", "鱼洞"));
 		}
-		
+
 		if(first.selectedIndex == 5)
 		{
 			second.options.add(new Option("陈家桥", "陈家桥", false, true));  // 默认选中区
@@ -226,12 +226,12 @@
 			second.options.add(new Option("工人村", "工人村"));
 			second.options.add(new Option("化龙桥", "化龙桥"));
 			second.options.add(new Option("劳动路", "劳动路"));
-			second.options.add(new Option("烈士墓", "烈士墓"));																					
+			second.options.add(new Option("烈士墓", "烈士墓"));
 			second.options.add(new Option("梨树湾", "梨树湾"));
 			second.options.add(new Option("三峡广场", "三峡广场"));
-			
+
 			second.options.add(new Option("沙滨路", "沙滨路"));
-			
+
 			second.options.add(new Option("沙正街", "沙正街"));
 			second.options.add(new Option("石桥铺", "石桥铺"));
 			second.options.add(new Option("天星桥", "天星桥"));
@@ -241,7 +241,7 @@
 			second.options.add(new Option("渝碚路", "渝碚路"));
 			second.options.add(new Option("站西路", "站西路"));
 		}
-		
+
 		if(first.selectedIndex == 6)
 		{
 			second.options.add(new Option("巴国城", "巴国城", false, true));  // 默认选中区
@@ -252,12 +252,12 @@
 			second.options.add(new Option("东部新城", "东部新城"));
 			second.options.add(new Option("动物园", "动物园"));
 			second.options.add(new Option("二郎", "二郎"));
-			second.options.add(new Option("伏牛溪", "伏牛溪"));																					
+			second.options.add(new Option("伏牛溪", "伏牛溪"));
 			second.options.add(new Option("黄桷坪", "黄桷坪"));
 			second.options.add(new Option("华岩", "华岩"));
-			
+
 			second.options.add(new Option("江津郊县", "江津郊县"));
-			
+
 			second.options.add(new Option("毛线沟", "毛线沟"));
 			second.options.add(new Option("马王乡", "马王乡"));
 			second.options.add(new Option("蟠龙", "蟠龙"));
@@ -267,9 +267,9 @@
 			second.options.add(new Option("谢家湾", "谢家湾"));
 			second.options.add(new Option("西彭", "西彭"));
 			second.options.add(new Option("杨家坪", "杨家坪"));
-			second.options.add(new Option("袁家岗", "袁家岗"));										
+			second.options.add(new Option("袁家岗", "袁家岗"));
 		}
-		
+
 		if(first.selectedIndex == 7)
 		{
 			second.options.add(new Option("朝天门", "朝天门", false, true));  // 默认选中区
@@ -277,7 +277,7 @@
 			second.options.add(new Option("两路口", "两路口"));
 			second.options.add(new Option("上清寺", "上清寺"));
 		}
-		
+
 		if(first.selectedIndex == 8)
 		{
 			second.options.add(new Option("步行街", "步行街", false, true));  // 默认选中区
@@ -285,7 +285,7 @@
 			second.options.add(new Option("建设村", "建设村"));
 			second.options.add(new Option("九宫庙", "九宫庙"));
 		}
-		
+
 		if(first.selectedIndex == 9)
 		{
 		console.log(1)
@@ -294,7 +294,7 @@
 		second.options.add(new Option("两路口", "两路口"));
 		second.options.add(new Option("上清寺", "上清寺"));
 		}
-		
+
 		if(first.selectedIndex == 10)
 		{
 			second.options.add(new Option("北碚老城区", "北碚老城区", false, true));  // 默认选中区
@@ -302,100 +302,100 @@
 			second.options.add(new Option("朝阳区", "朝阳区"));
 			second.options.add(new Option("城北新区", "城北新区"));
 			second.options.add(new Option("城南新区", "城南新区"));
-			second.options.add(new Option("歇马", "歇马"));											
+			second.options.add(new Option("歇马", "歇马"));
 		}
-		
+
 		if(first.selectedIndex == 11)
 		{
-			second.options.add(new Option("开州区", "开州区", false, true));  // 默认选中区			
+			second.options.add(new Option("开州区", "开州区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 12)
 		{
-			second.options.add(new Option("巫山县", "巫山县", false, true));  // 默认选中区											
+			second.options.add(new Option("巫山县", "巫山县", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 13)
 		{
 			second.options.add(new Option("云阳县", "云阳县", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 14)
 		{
 			second.options.add(new Option("秀山县", "秀山县", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 15)
 		{
 			second.options.add(new Option("黔江区", "黔江区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 16)
 		{
 			second.options.add(new Option("大足区", "大足区", false, true));  // 默认选中区
 			second.options.add(new Option("荣昌区", "荣昌区"));
 		}
-		
+
 		if(first.selectedIndex == 17)
 		{
 			second.options.add(new Option("彭水县", "彭水县", false, true));  // 默认选中区
 			second.options.add(new Option("石柱县", "石柱县"));
 			second.options.add(new Option("武隆县", "武隆县"));
 		}
-		
+
 		if(first.selectedIndex == 18)
 		{
 			second.options.add(new Option("梁平区", "梁平区", false, true));  // 默认选中区
 			second.options.add(new Option("忠县", "忠县"));
 		}
-		
+
 		if(first.selectedIndex == 19)
 		{
 			second.options.add(new Option("奉节县", "奉节县", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 20)
 		{
 			second.options.add(new Option("垫江县", "垫江县", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 21)
 		{
-			second.options.add(new Option("", "", false, true));  // 默认选中区
+			second.options.add(new Option("", "0", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 22)
 		{
 			second.options.add(new Option("铜梁区", "铜梁区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 23)
 		{
 			second.options.add(new Option("璧山区", "璧山区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 24)
 		{
 			second.options.add(new Option("合川区", "合川区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 25)
 		{
 			second.options.add(new Option("长寿区", "长寿区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 26)
 		{
 			second.options.add(new Option("万州区", "万州区", false, true));  // 默认选中区
 		}
-		
+
 		if(first.selectedIndex == 27)
 		{
 			second.options.add(new Option("涪陵区", "涪陵区", false, true));  // 默认选中区
 		}
-		
+
 	}
-	
+
 	first.onchange=function(){
 		nextChange();
 	}

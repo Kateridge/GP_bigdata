@@ -26,7 +26,8 @@ def salingHouseInfo(countyName, districtName):
     for info_key in info.area_info.keys():
         if info.area_info[info_key] == districtName:
             district_label = info_key
-
+    print(districtName)
+    print(district_label)
     sql = "SELECT hangoutTime1,price1,unitPrice1 FROM housesonsale_table WHERE housingEstate LIKE '%{}'".format(district_label)
     try:
         cur.execute(sql)

@@ -18,6 +18,9 @@ def jump_home1():
 def jump_home2():
     return render_template('index.html')
 
+@app.route('/history_district.html')
+def jump_history_district():
+    return render_template('history_district.html')
 
 @app.route('/history_price.html')
 def jump_history_price1():
@@ -138,70 +141,46 @@ def jump_history_price2():
 @app.route('/history_source_analyze.html', methods=['POST'])
 def jump_history_source2():
     para = request.form
-    if para['select_value'] == 'Housetype':
-        data = saled_src.saledHouseModel(para['community_name'])
-        data_table = saled_src.saleHouseChart2(para['community_name'])
-        flag = 1
-    elif para['select_value'] == 'TotalPrice':
-        data = saled_src.saledDealPrice(para['community_name'])
-        data_table = saled_src.saleHouseChart2(para['community_name'])
-        flag = 2
-    elif para['select_value'] == 'AveragePrice':
-        data = saled_src.saledDealUnitPrice(para['community_name'])
-        data_table = saled_src.saleHouseChart2(para['community_name'])
-        flag = 3
-    elif para['select_value'] == 'HouseSquare':
-        data = saled_src.saledHouseArea(para['community_name'])
-        data_table = saled_src.saleHouseChart2(para['community_name'])
-        flag = 4
-    return render_template('history_source_analyze.html', data=data, flag=flag, data_table=data_table)
+    graph1_data = saled_src.saledHouseModel(para['community_name'])
+    graph2_data = saled_src.saledDealPrice(para['community_name'])
+    graph3_data = saled_src.saledDealUnitPrice(para['community_name'])
+    graph4_data = saled_src.saledHouseArea(para['community_name'])
+    data_table = saled_src.saleHouseChart2(para['community_name'])
+    return render_template('history_source_analyze.html', graph1_data=graph1_data, graph2_data=graph2_data,
+                           graph3_data=graph3_data, graph4_data=graph4_data, data_table=data_table)
 
 
 @app.route('/onsale_bycommunity.html')
-def jump_blank():
+def jump_onsale_community1():
     return render_template('onsale_bycommunity.html')
 
 
 @app.route('/onsale_bydistrict.html')
-def jump_profile():
+def jump_onsale_district1():
     return render_template('onsale_bydistrict.html')
 
 
-@app.route('/onsale_bycommunity_analyze.html', methods=['POST'])
-def jump_community():
-    para = request.form
-    if para['select_value'] == 'Housetype':
-        data = saling.salingHouseModel(para['community_name'])
-        data_table = saling.salingHouseChart(para['community_name'])
-        flag = 1
-    elif para['select_value'] == 'Status':
-        data = saling.salingDecorateStatus1(para['community_name'])
-        data_table = saling.salingHouseChart(para['community_name'])
-        flag = 2
-    elif para['select_value'] == 'Housesquare':
-        data = saling.salingHouseArea(para['community_name'])
-        data_table = saling.salingHouseChart(para['community_name'])
-        flag = 3
-    elif para['select_value'] == 'Averageprice':
-        data = saling.salingUnitPrice(para['community_name'])
-        data_table = saling.salingHouseChart(para['community_name'])
-        flag = 4
-    elif para['select_value'] == 'Totalprice':
-        data = saling.salingDealPrice(para['community_name'])
-        data_table = saling.salingHouseChart(para['community_name'])
-        flag = 5
-    elif para['select_value'] == 'Orientation':
-        data = saling.salingHouseFaced1(para['community_name'])
-        data_table = saling.salingHouseChart(para['community_name'])
-        flag = 6
-    return render_template('onsale_bycommunity_analyze.html', data=data, flag=flag, data_table=data_table)
+@app.route('/onsale_bycommunity_analyze.html', methods=['GET'])
+def jump_onsale_community2():
+    para = request.args
+    graph1_data = saling.salingHouseModel(para['community_name'])
+    graph2_data = saling.salingDecorateStatus1(para['community_name'])
+    graph3_data = saling.salingHouseArea(para['community_name'])
+    graph4_data = saling.salingUnitPrice(para['community_name'])
+    graph5_data = saling.salingDealPrice(para['community_name'])
+    graph6_data = saling.salingHouseFaced1(para['community_name'])
+    graph7_data = saling.hangoutTime_unitPrice(para['community_name'])
+    graph8_data = saling.hangoutTime_price(para['community_name'])
+    data_table = saling.salingHouseChart(para['community_name'])
+    return render_template('onsale_bycommunity_analyze.html', graph1_data=graph1_data, graph2_data=graph2_data,
+                           graph3_data=graph3_data, graph4_data=graph4_data, graph5_data=graph5_data,
+                           graph6_data=graph6_data, graph7_data=graph7_data, graph8_data=graph8_data,
+                           data_table=data_table)
 
 
 @app.route('/onsale_bydistrict_analyze.html', methods=['POST'])
-def jump_area():
+def jump_onsale_district2():
     para = request.form
-    print(para["district_name"])
-    print(para["area_name"])
     data = saling2.salingHouseInfo(para['district_name'], para['area_name'])
     data_table = saling2.salingHouseChart2(para['district_name'], para['area_name'])
     return render_template('onsale_bydistrict_analyze.html', data=data, data_table=data_table)

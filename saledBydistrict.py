@@ -103,6 +103,3 @@ def saledHouseChart3(countyName,districtName):
     print(list_return)
     return list_return
 
-
-saledHouseInfo("沙坪坝","大学城")
-saledHouseChart3("沙坪坝","大学城")

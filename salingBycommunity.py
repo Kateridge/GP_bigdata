@@ -292,6 +292,3 @@ def salingHouseChart(communityName):
     print(list_return)
     return list_return
 
-salingHangoutTime('华南城巴南华府')
-hangoutTime_price('华南城巴南华府')
-hangoutTime_unitPrice('华南城巴南华府')

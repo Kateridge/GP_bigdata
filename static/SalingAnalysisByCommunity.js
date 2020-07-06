@@ -1,4 +1,11 @@
-var myChart = echarts.init(document.getElementById("hero-donut"));
+var myChart1 = echarts.init(document.getElementById("graph1"));
+var myChart2 = echarts.init(document.getElementById("graph2"));
+var myChart3 = echarts.init(document.getElementById("graph3"));
+var myChart4 = echarts.init(document.getElementById("graph4"));
+var myChart5 = echarts.init(document.getElementById("graph5"));
+var myChart6 = echarts.init(document.getElementById("graph6"));
+var myChart7 = echarts.init(document.getElementById("graph7"));
+var myChart8 = echarts.init(document.getElementById("graph8"));
 
 var option1 = {
     title: {
@@ -8,7 +15,7 @@ var option1 = {
         name: '户型比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph1_data
     }]
 };
 var option2 = {
@@ -19,7 +26,7 @@ var option2 = {
         name: '装修比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph2_data
     }]
 };
 var option3 = {
@@ -30,7 +37,7 @@ var option3 = {
         name: '面积比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph3_data
     }]
 };
 var option4 = {
@@ -41,7 +48,7 @@ var option4 = {
         name: '均价比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph4_data
     }]
 };
 var option5 = {
@@ -52,7 +59,7 @@ var option5 = {
         name: '总价比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph5_data
     }]
 };
 var option6 = {
@@ -63,25 +70,65 @@ var option6 = {
         name: '朝向比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph6_data
     }]
 };
+var option7 = {
+    title: {
+        text: '时间-均价'
+    },
+    tooltip: {},
+    legend: {
+        data:['均价']
+    },
+    dataset: {
+        source: graph7_data
+    },
+    xAxis: {type: 'category'},
+    yAxis: [
+        {
+        type: 'value',
+            name: '均价/元',
+        }
+    ],
+    series: [
+        {
+            name: '均价',
+            type: 'bar'
+        }
+    ],
+};
+var option8 = {
+    title: {
+        text: '时间 - 总价'
+    },
+    tooltip: {},
+    legend: {
+        data:['总价']
+    },
+    dataset: {
+        source: graph8_data
+    },
+    xAxis: {type: 'category'},
+    yAxis: [
+        {
+        type: 'value',
+            name: '总价/万元',
+        }
+    ],
+    series: [
+        {
+            name: '总价',
+            type: 'bar'
+        }
+    ],
+};
 
-if(flag === 1){
-    myChart.setOption(option1);
-}
-else if(flag === 2){
-    myChart.setOption(option2);
-}
-else if(flag === 3){
-    myChart.setOption(option3);
-}
-else if(flag === 4){
-    myChart.setOption(option4);
-}
-else if(flag === 5){
-    myChart.setOption(option5);
-}
-else if(flag === 6){
-    myChart.setOption(option6);
-}
+myChart1.setOption(option1);
+myChart2.setOption(option2);
+myChart3.setOption(option3);
+myChart4.setOption(option4);
+myChart5.setOption(option5);
+myChart6.setOption(option6);
+myChart7.setOption(option7);
+myChart8.setOption(option8);

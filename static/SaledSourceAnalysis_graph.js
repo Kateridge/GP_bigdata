@@ -1,4 +1,7 @@
-var myChart = echarts.init(document.getElementById('graph-display'));
+var myChart1 = echarts.init(document.getElementById('graph1'));
+var myChart2 = echarts.init(document.getElementById('graph2'));
+var myChart3 = echarts.init(document.getElementById('graph3'));
+var myChart4 = echarts.init(document.getElementById('graph4'));
 
 var option1 = {
     title: {
@@ -8,7 +11,7 @@ var option1 = {
         name: '户型比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph1_data
     }]
 };
 
@@ -21,7 +24,7 @@ var option2 = {
         type: 'pie',
         radius: '70%',
         roseType: 'angle',
-        data:data
+        data: graph2_data
     }]
 };
 
@@ -33,7 +36,7 @@ var option3 = {
         name: '均价比例',
         type: 'pie',
         radius: '70%',
-        data:data
+        data: graph3_data
     }]
 };
 
@@ -46,20 +49,12 @@ var option4 = {
         type: 'pie',
         radius: '70%',
         roseType: 'angle',
-        data:data
+        data: graph4_data
     }]
 };
 
-if(flag === 1){
-    myChart.setOption(option1);
-}
-else if(flag === 2){
-    myChart.setOption(option2);
-}
-else if(flag === 3){
-    myChart.setOption(option3);
-}
-else if(flag === 4){
-    myChart.setOption(option4);
-}
+myChart1.setOption(option1);
+myChart2.setOption(option2);
+myChart3.setOption(option3);
+myChart4.setOption(option4);
 
