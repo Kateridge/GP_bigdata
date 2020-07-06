@@ -3,7 +3,8 @@ from pandas import Series, DataFrame
 import pandas as pd
 import connectTodb as db_conn
 
-cur =  db_conn.cur
+cur = db_conn.cur
+
 
 # 户型   装修情况   面积  朝向 均价 总价
 

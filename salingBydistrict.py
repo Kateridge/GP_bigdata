@@ -1,9 +1,10 @@
-import pymysql,re
+import pymysql, re
 import areaInfo as info
 import pandas as pd
 import connectTodb as db_conn
 
-cur =  db_conn.cur
+cur = db_conn.cur
+
 
 def salingHouseInfo(countyName, districtName):
     # 成交日期列表
@@ -24,11 +25,12 @@ def salingHouseInfo(countyName, districtName):
 
     district_label = ""
     for info_key in info.area_info.keys():
-        if  info.area_info[info_key]== districtName:
+        if info.area_info[info_key] == districtName:
             district_label = info_key
     print(district_label)
 
-    sql = "SELECT hangoutTime1,price1,unitPrice1 FROM housesonsale_table WHERE housingEstate LIKE '%{}'".format(district_label)
+    sql = "SELECT hangoutTime1,price1,unitPrice1 FROM housesonsale_table WHERE housingEstate LIKE '%{}'".format(
+        district_label)
     print(sql)
     try:
         cur.execute(sql)
@@ -40,8 +42,8 @@ def salingHouseInfo(countyName, districtName):
     for element in cur:
         result = re.findall("(.*?)\-(.*?)\-(.*?)", element[0])
         hangouttime.append(str(result[0][0] + '.' + result[0][1]))
-        price.append(round(float(element[1]),2))
-        unitprice.append(round(float(element[2]),2))
+        price.append(round(float(element[1]), 2))
+        unitprice.append(round(float(element[2]), 2))
     dict = {'hangouttime': hangouttime, 'price': price, 'unitprice': unitprice}
     dtf = pd.DataFrame(dict)
     dtf1 = dtf.groupby('hangouttime').mean().reset_index()
