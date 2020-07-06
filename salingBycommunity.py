@@ -1,13 +1,15 @@
-import pymysql, re
-import areaInfo as info
+import pymysql, re, math
+from pandas import Series, DataFrame
+import pandas as pd
 import connectTodb as db_conn
 
 cur =  db_conn.cur
 
+# 户型   装修情况   面积  朝向 均价 总价
 
-# 1.房屋户型扇形图
-def saledHouseModel(communintyName):
-    sql = "SELECT housingModel2 FROM housessaled_table WHERE communityName2 = '{}'".format(communintyName)
+# 1.户型饼状图：
+def salingHouseModel(communityName):
+    sql = "SELECT houseingModel1 FROM housesonsale_table WHERE communityName1 = '{}'".format(communityName)
     try:
         cur.execute(sql)
     except:
@@ -31,9 +33,9 @@ def saledHouseModel(communintyName):
     return list_return
 
 
-# 2.房屋总价扇形图
-def saledDealPrice(communintyName):
-    sql = "SELECT dealPrice2 FROM housessaled_table WHERE communityName2 = '{}'".format(communintyName)
+# 2.房屋总价饼状图
+def salingDealPrice(communityName):
+    sql = "SELECT Price1 FROM housesonsale_table  WHERE communityName1 = '{}'".format(communityName)
     try:
         cur.execute(sql)
     except:
@@ -63,9 +65,9 @@ def saledDealPrice(communintyName):
     return list_return
 
 
-# 3.房屋均价扇形图
-def saledDealUnitPrice(communintyName):
-    sql = "SELECT dealUnitPrice2 FROM housessaled_table WHERE communityName2 = '{}'".format(communintyName)
+# 3.房屋均价饼状图
+def salingUnitPrice(communityName):
+    sql = "SELECT unitPrice1 FROM housesonsale_table WHERE communityName1 = '{}'".format(communityName)
     try:
         cur.execute(sql)
     except:
@@ -94,9 +96,9 @@ def saledDealUnitPrice(communintyName):
     return list_return
 
 
-# 4.房屋面积扇形图
-def saledHouseArea(communintyName):
-    sql = "SELECT houseArea2 FROM housessaled_table WHERE communityName2 = '{}'".format(communintyName)
+# 4.房屋面积饼状图
+def salingHouseArea(communintyName):
+    sql = "SELECT houseArea1 FROM housesonsale_table WHERE communityName1 = '{}'".format(communintyName)
     try:
         cur.execute(sql)
     except:
@@ -125,40 +127,69 @@ def saledHouseArea(communintyName):
     return list_return
 
 
-# 房源分析表
-def saleHouseChart2(communityName):
-    sql = "SELECT dealUnitPrice2, dealPrice2, hangoutPrice2, " \
-          "dealCycle2, housingEstate FROM housessaled_table WHERE communityName2 = '{}'".format(
-        communityName)
+# 5.装修情况饼状图：
+def salingDecorateStatus1(communityName):
+    sql = "SELECT decorateStatus1 FROM housesonsale_table WHERE communityName1 = '{}'".format(communityName)
     try:
         cur.execute(sql)
     except:
         print("查询失败")
-    sum_count = 0;
-    sum_dealUnitPrice = 0;
-    sum_dealPrice = 0;
-    sum_hangoutPrice = 0;
-    sum_dealCycle = 0;
+    list_model = []
     for element in cur:
-        sum_count = sum_count + 1
-        sum_dealUnitPrice = sum_dealUnitPrice + element[0]
-        sum_dealPrice = sum_dealPrice + element[1]
-        sum_hangoutPrice = sum_hangoutPrice + element[2]
-        sum_dealCycle = sum_dealCycle + element[3]
-        housingEstate = element[4]
-    avg_dealUnitPrice = round(int(sum_dealUnitPrice) / sum_count, 2)
-    avg_dealPrice = round(int(sum_dealPrice) / sum_count, 2)
-    avg_hangoutPrice = round(int(sum_hangoutPrice) / sum_count, 2)
-    avg_dealCycle = round(int(sum_dealCycle) / sum_count, 2)
-    label_district = housingEstate.split("_")[1]
-    label_county = ""
-    for county_elem in info.county:
-        for district_elem in info.district[county_elem]:
-            if label_district == district_elem:
-                label_county = county_elem
-    list_return = {'communityName': communityName, 'label_county': info.area_info[label_county],
-                   'label_district': info.area_info[label_district], 'avg_dealUnitPrice': avg_dealUnitPrice,
-                   'avg_dealPrice': avg_dealPrice, 'avg_hangoutPrice': avg_hangoutPrice,
-                   'avg_dealCycle': avg_dealCycle, 'sum_count': sum_count}
+        list_model.append(element[0].replace(" ", ""))
+    list_model.sort()
+    set_model = set(list_model)
+    set_model = list(set_model)
+    value = [0] * len(set_model)
+    for i in range(0, len(set_model)):
+        value[i] = list_model.count(set_model[i])
+    list_return = []
+    for i in range(0, len(set_model)):
+        dic = {}
+        dic['value'] = value[i]
+        dic['name'] = set_model[i]
+        list_return.append(dic)
+    print(list_return)
+    return list_return
+
+
+# 6.房屋朝向饼状图
+def salingHouseFaced1(communityName):
+    sql = "SELECT houseFaced1 FROM housesonsale_table WHERE communityName1 = '{}'".format(communityName)
+    try:
+        cur.execute(sql)
+    except:
+        print("查询失败")
+
+    print(sql)
+    list_model = ["东", "东南", "南", "西南", "西", "西北", "北", "东北", "其他"]
+    value = [0] * 9
+    for element in cur:
+        re.sub(' ', '', element[0], re.S)
+        if element[0] == "东" or element[0] == "南 东":
+            value[0] = value[0] + 1
+        elif element[0] == "东南":
+            value[1] = value[1] + 1
+        elif element[0] == "南":
+            value[2] = value[2] + 1
+        elif element[0] == "西南":
+            value[3] = value[3] + 1
+        elif element[0] == "西":
+            value[4] = value[4] + 1
+        elif element[0] == "西北":
+            value[5] = value[5] + 1
+        elif element[0] == "东北":
+            value[7] = value[7] + 1
+        elif element[0] == "北" or element[0] == "南 北":
+            value[6] = value[6] + 1
+        else:
+            value[8] = value[8] + 1
+    list_return = []
+    for i in range(0, 9):
+        dic = {}
+        if value[i] != '0':
+            dic['value'] = value[i]
+            dic['name'] = list_model[i]
+            list_return.append(dic)
     print(list_return)
     return list_return
