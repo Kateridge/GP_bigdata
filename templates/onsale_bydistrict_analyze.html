@@ -98,38 +98,17 @@
 
 								<section class="panel">
 									<header class="panel-heading">
-										<center>小区-房源数统计图</center>
+										<center>地区在售房源分析</center>
 									</header>
 									<div class="panel-body">
 									<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 									<center>
 									    <div id="main" style="width: 600px;height:400px;"class="graph"></div>
 									</center>
-									    <script type="text/javascript">
-									        // 基于准备好的dom，初始化echarts实例
-									        var myChart = echarts.init(document.getElementById('main'));
-									
-									        // 指定图表的配置项和数据
-									        var option = {
-									      
-									            tooltip: {},
-									            legend: {
-									                data:['销量']
-									            },
-									            xAxis: {
-									                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-									            },
-									            yAxis: {},
-									            series: [{
-									                name: '销量',
-									                type: 'bar',
-									                data: [5, 20, 36, 10, 10, 20]
-									            }]
-									        };
-									
-									        // 使用刚指定的配置项和数据显示图表。
-									        myChart.setOption(option);
-									    </script>
+									    <script type="text/javascript" charset="utf-8">
+                                                var data = {{ data|safe }};
+                                            </script>
+                                        <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
 										</div>
 								</section>
 								
@@ -150,7 +129,9 @@
                                                     <th>小区名称</th>
                                                     <th>区县</th>
                                                     <th>所属区域</th>
-                                                    <th>挂牌均价</th>
+                                                    <th>挂牌总价平均</th>
+                                                    <th>挂牌均价平均</th>
+                                                    <th>平均面积</th>
                                                     <th>在售房屋总数</th>
                                                     <!--
 													<th style="width:8px;"></th>
@@ -164,17 +145,17 @@
 												</tr>
 											</thead>
 											<tbody>
-                                            <!--
-												<tr class="odd gradeX">
-													<td></td>
-													<td><a href="https://cq.lianjia.com/chengjiao/106105163207.html">渝康花苑</a></td>
-													<td class="hidden-phone">渝北</td>
-													<td class="hidden-phone">2010</td>
-													<td class="hidden-phone">300</td>
-													<td class="hidden-phone">物业</td>
-													<td class="hidden-phone">万达</td>
-											    </tr>-->
-
+                                            {% for item in data_table %}
+                                                <tr class="odd gradeX">
+                                                <td>{{ item['communityName'] | safe }}</td>
+                                                <td>{{ item['countyName'] | safe }}</td>
+                                                <td class="hidden-phone">{{ item['districtName'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['avgprice'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['avgunitprice'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['avgarea'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['num'] | safe}}</td>
+                                            </tr>
+                                            {% endfor %}
 											</tbody>
 										</table>
 									</section>

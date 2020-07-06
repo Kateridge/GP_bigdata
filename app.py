@@ -2,7 +2,9 @@ import pymysql
 from flask import Flask, render_template, send_file, request
 import saledHousePriceAnalysis as saled
 import saledHouseSourceAnalysis as saled_src
-import  salingBycommunity as saling
+import salingBycommunity as saling
+import salingBydistrict as saling2
+
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
@@ -165,33 +167,42 @@ def jump_profile():
     return render_template('onsale_bydistrict.html')
 
 
-@app.route('/onsale_bycommunity_analyze.html',methods=['POST'])
+@app.route('/onsale_bycommunity_analyze.html', methods=['POST'])
 def jump_community():
     para = request.form
     if para['select_value'] == 'Housetype':
         data = saling.salingHouseModel(para['community_name'])
+        data_table = saling.salingHouseChart(para['community_name'])
         flag = 1
     elif para['select_value'] == 'Status':
         data = saling.salingDecorateStatus1(para['community_name'])
+        data_table = saling.salingHouseChart(para['community_name'])
         flag = 2
     elif para['select_value'] == 'Housesquare':
         data = saling.salingHouseArea(para['community_name'])
+        data_table = saling.salingHouseChart(para['community_name'])
         flag = 3
     elif para['select_value'] == 'Averageprice':
         data = saling.salingUnitPrice(para['community_name'])
+        data_table = saling.salingHouseChart(para['community_name'])
         flag = 4
     elif para['select_value'] == 'Totalprice':
         data = saling.salingDealPrice(para['community_name'])
+        data_table = saling.salingHouseChart(para['community_name'])
         flag = 5
     elif para['select_value'] == 'Orientation':
         data = saling.salingHouseFaced1(para['community_name'])
+        data_table = saling.salingHouseChart(para['community_name'])
         flag = 6
-    return render_template('onsale_bycommunity_analyze.html',data=data,flag=flag)
+    return render_template('onsale_bycommunity_analyze.html', data=data, flag=flag, data_table=data_table)
 
 
-@app.route('/onsale_bydistrict_analyze.html')
+@app.route('/onsale_bydistrict_analyze.html', methods=['POST'])
 def jump_area():
-    return render_template('onsale_bydistrict_analyze.html')
+    para = request.form
+    data = saling2.salingHouseInfo(para['district_name'], para['area_name'])
+    data_table = saling2.salingHouseChart2(para['district_name'], para['area_name'])
+    return render_template('onsale_bydistrict_analyze.html', data=data, data_table=data_table)
 
 
 @app.route('/bdmap')

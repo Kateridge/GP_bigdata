@@ -118,24 +118,24 @@
 						                    <th class="hidden-phone">房源</th>
                                                     <th class="hidden-phone">面积(m<sup>2</sup>)</th>
                                                     <th class="hidden-phone">户型</th>
-                                                    <th class="hidden-phone">均价</th>
                                                     <th class="hidden-phone">总价</th>
+                                                    <th class="hidden-phone">均价</th>
                                                     <th class="hidden-phone">装修</th>
                                                     <th class="hidden-phone">挂牌日期</th>
-                                                    <th class="hidden-phone">详细信息</th>
 						                </tr>
 						                </thead>
 						                <tbody>
-						              <!--  <tr class="odd gradeX">
-						                    <td></td>
-											<td><a href="https://cq.lianjia.com/chengjiao/106105163207.html">渝康花苑 2室2厅 73平米</a></td>
-						                    <td class="hidden-phone">2室2厅1厨1卫</td>
-											<td class="hidden-phone">精装</td>
-						                    <td class="hidden-phone">300</td>
-						                    <td class="hidden-phone">东南</td>
-											<td class="hidden-phone">10</td>
-										</tr>
-						                -->
+						                {% for item in data_table %}
+                                            <tr class="odd gradeX">
+                                            <td><a href="{{ item['houseHref'] | safe}}">{{ item['houseName'] | safe}}</a></td>
+                                            <td>{{ item['houseArea'] | safe }}</td>
+                                            <td class="hidden-phone">{{ item['houseModel'] | safe}}</td>
+                                            <td class="hidden-phone">{{ item['housePrice'] | safe}}</td>
+                                            <td class="hidden-phone">{{ item['houseUnitPrice'] | safe}}</td>
+                                            <td class="hidden-phone">{{ item['decorateStatus'] | safe}}</td>
+                                            <td class="hidden-phone">{{ item['hangoutTime'] | safe}}</td>
+                                        </tr>
+                                        {% endfor %}
 						                </tbody>
 						                </table>
 						            </section>
