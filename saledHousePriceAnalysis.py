@@ -4,7 +4,7 @@ import pandas as pd
 
 # 连接数据库
 try:
-    conn = pymysql.connect(host='127.0.0.1', user='root', passwd='51k36654', db='lianjiacq', port=3306)
+    conn = pymysql.connect(host='127.0.0.1', user='root', passwd='123456', db='lianjiaTotal', port=3307)
     cur = conn.cursor()
     # print("登录数据库成功！！！")
 except Exception:

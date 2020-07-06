@@ -1,10 +1,10 @@
-area_info = {'jiangbei': '江北', 'yubei': '渝北', 'nanan': '南岸', 'banan': '巴南', 'shapingba': '沙坪坝',
- 'jiulongpo': '九龙坡', 'yuzhong': '渝中', 'dadukou': '大渡口', 'jiangjing': '江津', 'beibei': '北碚',
+area_info = {'jiangbei': '江北区', 'yubei': '渝北区', 'nanan': '南岸区', 'banan': '巴南区', 'shapingba': '沙坪坝区',
+ 'jiulongpo': '九龙坡区', 'yuzhong': '渝中区', 'dadukou': '大渡口区', 'jiangjing': '江津区', 'beibei': '北碚区',
  'kaizhouqu': '开州区', 'wushanxian1': '巫山县', 'wuxixian': '巫溪县', 'xiushantujiazumiaozuzizhixian': '秀山土家族苗族自治县',
  'youyangtujiazumiaozuzizhixian': '酉阳土家族苗族自治县', 'rongchangqu': '荣昌区',
  'pengshuimiaozutujiazuzizhixian': '彭水苗族土家族自治县', 'zhongxian': '忠县', 'fengjiexian': '奉节县',
- 'dianjiangxian': '垫江县', 'chengkouxian': '城口县', 'tongliang': '铜梁', 'bishan': '璧山', 'hechuang': '合川',
- 'changshou1': '长寿', 'wanzhou': '万州', 'fuling': '涪陵', 'beibinlu': '北滨路', 'dashiba': '大石坝', 'dazhulin': '大竹林',
+ 'dianjiangxian': '垫江县', 'chengkouxian': '城口县', 'tongliang': '铜梁区', 'bishan': '璧山区', 'hechuang': '合川区',
+ 'changshou1': '长寿区', 'wanzhou': '万州区', 'fuling': '涪陵区', 'beibinlu': '北滨路', 'dashiba': '大石坝', 'dazhulin': '大竹林',
  'guanyinqiao': '观音桥', 'haierlu': '海尔路', 'hongensi': '鸿恩寺', 'huahuiyuan': '花卉园', 'huangnibang': '黄泥磅',
  'jiangbeizui': '江北嘴', 'jiazhou': '嘉州', 'longtousi': '龙头寺', 'longxing': '龙兴', 'nanqiaosi': '南桥寺',
  'ranjiaba': '冉家坝', 'shimahe': '石马河', 'shizishan': '石子山', 'songshuqiao': '松树桥', 'wulidian1': '五里店',
@@ -33,6 +33,7 @@ area_info = {'jiangbei': '江北', 'yubei': '渝北', 'nanan': '南岸', 'banan'
  'qianjiang1': '黔江', 'dazu1': '大足', 'rongchang': '荣昌', 'pengshui': '彭水', 'shizhu1': '石柱',
  'wulongxian1': '武隆县', 'liangping1': '梁平', 'zhongxian1': '忠县', 'fengjie': '奉节', 'dianjiangxian1': '垫江县',
  'tongliang 1': '铜梁', 'hechuan': '合川', 'changshou': '长寿', 'fuling1': '涪陵'}
+
 
 county = ['jiangbei', 'yubei', 'nanan', 'banan', 'shapingba', 'jiulongpo', 'yuzhong', 'dadukou', 'jiangjing', 'beibei', 'kaizhouqu', 'wushanxian1', 'wuxixian', 'xiushantujiazumiaozuzizhixian', 'youyangtujiazumiaozuzizhixian', 'rongchangqu', 'pengshuimiaozutujiazuzizhixian', 'zhongxian', 'fengjiexian', 'dianjiangxian', 'chengkouxian', 'tongliang', 'bishan', 'hechuang', 'changshou1', 'wanzhou', 'fuling']
 
