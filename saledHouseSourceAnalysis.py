@@ -19,13 +19,29 @@ def saledHouseModel(communintyName):
     set_model = set(list_model)
     set_model = list(set_model)
     value = [0] * len(set_model)
+    sum = 0
     for i in range(0, len(set_model)):
         value[i] = list_model.count(set_model[i])
-    list_return = []
+        sum = sum + value[i]
+    change_model = []
+    change_value = []
+    other = ""
+    sumother = 0
     for i in range(0, len(set_model)):
+        if value[i]/sum < 0.05:
+            other = '其他'
+            sumother = sumother + value[i]
+        else:
+            change_model.append(set_model[i])
+            change_value.append(value[i])
+    if other == '其他':
+        change_model.append(other)
+        change_value.append(sumother)
+    list_return = []
+    for i in range(0, len(change_model)):
         dic = {}
-        dic['value'] = value[i]
-        dic['name'] = set_model[i]
+        dic['value'] = change_value[i]
+        dic['name'] = change_model[i]
         list_return.append(dic)
     print(list_return)
     return list_return

@@ -23,13 +23,29 @@ def salingHouseModel(communityName):
     set_model = set(list_model)
     set_model = list(set_model)
     value = [0] * len(set_model)
+    sum = 0
     for i in range(0, len(set_model)):
         value[i] = list_model.count(set_model[i])
-    list_return = []
+        sum = sum + value[i]
+    change_model = []
+    change_value = []
+    other = ""
+    sumother = 0
     for i in range(0, len(set_model)):
+        if value[i]/sum < 0.05:
+            other = '其他'
+            sumother = sumother + value[i]
+        else:
+            change_model.append(set_model[i])
+            change_value.append(value[i])
+    if other == '其他':
+        change_model.append(other)
+        change_value.append(sumother)
+    list_return = []
+    for i in range(0, len(change_model)):
         dic = {}
-        dic['value'] = value[i]
-        dic['name'] = set_model[i]
+        dic['value'] = change_value[i]
+        dic['name'] = change_model[i]
         list_return.append(dic)
     print(list_return)
     return list_return
@@ -163,36 +179,25 @@ def salingHouseFaced1(communityName):
     except:
         print("查询失败")
 
-    print(sql)
-    list_model = ["东", "东南", "南", "西南", "西", "西北", "北", "东北", "其他"]
-    value = [0] * 9
+    list_face = []
     for element in cur:
-        re.sub(' ', '', element[0], re.S)
-        if element[0] == "东" or element[0] == "南 东":
-            value[0] = value[0] + 1
-        elif element[0] == "东南":
-            value[1] = value[1] + 1
-        elif element[0] == "南":
-            value[2] = value[2] + 1
-        elif element[0] == "西南":
-            value[3] = value[3] + 1
-        elif element[0] == "西":
-            value[4] = value[4] + 1
-        elif element[0] == "西北":
-            value[5] = value[5] + 1
-        elif element[0] == "东北":
-            value[7] = value[7] + 1
-        elif element[0] == "北" or element[0] == "南 北":
-            value[6] = value[6] + 1
+        if(" " in element[0]):
+            result = element[0].split(" ")
+            list_face.append(result[0])
+            list_face.append(result[1])
         else:
-            value[8] = value[8] + 1
+            list_face.append(element[0])
+    set_face = set(list_face)
+    set_face = list(set_face)
+    value = [0] * len(set_face)
+    for i in range(0, len(set_face)):
+        value[i] = list_face.count(set_face[i])
     list_return = []
-    for i in range(0, 9):
+    for i in range(0, len(set_face)):
         dic = {}
-        if value[i] != '0':
-            dic['value'] = value[i]
-            dic['name'] = list_model[i]
-            list_return.append(dic)
+        dic['value'] = value[i]
+        dic['name'] = set_face[i]
+        list_return.append(dic)
     print(list_return)
     return list_return
 
@@ -291,4 +296,5 @@ def salingHouseChart(communityName):
         list_return.append(dic)
     print(list_return)
     return list_return
+
 
