@@ -1,6 +1,7 @@
 import pymysql, re, math
 from pandas import Series, DataFrame
 import pandas as pd
+import areaInfo as info
 import connectTodb as db_conn
 
 cur =  db_conn.cur
@@ -193,3 +194,27 @@ def salingHouseFaced1(communityName):
             list_return.append(dic)
     print(list_return)
     return list_return
+
+# 按小区：在售房屋信息表
+def salingHouseChart(communityName):
+    sql = "SELECT houseName1, housingHref1, houseArea1, houseingModel1, price1,unitPrice1,decorateStatus1,hangoutTime1 " \
+          "FROM housesonsale_table WHERE communityName1 = '{}'".format(communityName)
+    try:
+        cur.execute(sql)
+    except:
+        print("查询失败")
+    list_return = []
+    for element in cur:
+        dic = {}
+        dic['houseName'] = element[0]
+        dic['houseHref'] = element[1]
+        dic['houseArea'] = str(element[2]) + "平方米"
+        dic['houseModel'] = element[3]
+        dic['housePrice'] = str(element[4]) + "万元"
+        dic['houseUnitPrice'] = str(element[5]) + "元/平方米"
+        dic['decorateStatus'] = element[6]
+        dic['hangoutTime'] = element[7]
+        list_return.append(dic)
+    print(list_return)
+    return list_return
+
