@@ -61,8 +61,3 @@ def salingHouseInfo(countyName, districtName):
         list_return.append([list_month[i], value1[i], value2[i]])
     print(list_return)
     return list_return
-
-
-
-
-salingHouseInfo('沙坪坝','大学城')

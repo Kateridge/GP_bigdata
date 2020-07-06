@@ -2,7 +2,7 @@ import pymysql
 from flask import Flask, render_template, send_file, request
 import saledHousePriceAnalysis as saled
 import saledHouseSourceAnalysis as saled_src
-import  salingHouseSourseAnalysis as saling
+import  salingBycommunity as saling
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
