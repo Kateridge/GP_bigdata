@@ -1,15 +1,9 @@
 import pymysql, re, math
 from pandas import Series, DataFrame
 import pandas as pd
+import connectTodb as db_conn
 
-# 连接数据库
-try:
-    conn = pymysql.connect(host='127.0.0.1', user='root', passwd='51k36654', db='lianjiacq', port=3306)
-    cur = conn.cursor()
-    # print("登录数据库成功！！！")
-except Exception:
-    print("登录数据库出错，请检查用户名和密码！！！")
-
+cur =  db_conn.cur
 
 # 户型   装修情况   面积  朝向 均价 总价
 
