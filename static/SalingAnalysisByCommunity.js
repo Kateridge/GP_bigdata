@@ -8,52 +8,178 @@ var myChart7 = echarts.init(document.getElementById("graph7"));
 var myChart8 = echarts.init(document.getElementById("graph8"));
 
 var option1 = {
-    series:[{
-        name: '户型比例',
-        type: 'pie',
-        radius: '70%',
-        data: graph1_data
-    }]
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'户型比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph1_data
+        }
+    ]
 };
 var option2 = {
-    series:[{
-        name: '装修比例',
-        type: 'pie',
-        radius: '70%',
-        data: graph2_data
-    }]
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'装修比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph2_data
+        }
+    ]
 };
 var option3 = {
-    series:[{
-        name: '面积比例',
-        type: 'pie',
-        radius: '70%',
-        data: graph3_data
-    }]
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'面积比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph3_data
+        }
+    ]
 };
 var option4 = {
-    series:[{
-        name: '均价比例',
-        type: 'pie',
-        radius: '70%',
-        data: graph4_data
-    }]
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'均价比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph4_data
+        }
+    ]
 };
 var option5 = {
-    series:[{
-        name: '总价比例',
-        type: 'pie',
-        radius: '70%',
-        data: graph5_data
-    }]
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'总价比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph5_data
+        }
+    ]
 };
 var option6 = {
-    series:[{
-        name: '朝向比例',
-        type: 'pie',
-        radius: '70%',
-        data: graph6_data
-    }]
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'朝向比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph6_data
+        }
+    ]
 };
 var option7 = {
     tooltip: {},
