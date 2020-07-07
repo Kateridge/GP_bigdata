@@ -594,10 +594,16 @@ def saledHouseChart(communityName):
         dic['houseModel'] = element[2].replace(" ", "")
         dic['dealUnitPrice'] = str(element[3]) + '元/平方米'
         dic['dealPrice'] = str(element[4]) + '万元'
-        dic['hangoutPrice'] = str(element[5]) + '万元'
+        if element[5] != -1:
+            dic['hangoutPrice'] = str(element[5]) + '万元'
+        else:
+            dic['hangoutPrice'] = str(element[4]) + '万元'
         dic['decorateStatus'] = element[6].replace(" ", "")
-        result = re.findall("(.*?)\-(.*?)\-(.*?) ", element[7])
-        dic['hangoutTime'] = result[0][0] + '.' + result[0][1] + '.' + result[0][2]
+        try:
+            result = re.findall("(.*?)\-(.*?)\-(.*?) ", element[7])
+            dic['hangoutTime'] = result[0][0] + '.' + result[0][1] + '.' + result[0][2]
+        except:
+            dic['hangoutTime'] = element[7]
         dic['dealTime'] = re.findall("(.*?) 成交", element[8])[0]
         dic['houseFloor'] = element[9].replace(" ", "")
         dic['houseHref'] = element[10]
