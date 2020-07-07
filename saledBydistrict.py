@@ -1,4 +1,4 @@
-import pymysql,re
+import pymysql, re
 import areaInfo as info
 import pandas as pd
 import connectTodb as db_conn
@@ -27,7 +27,8 @@ def saledHouseInfo(countyName, districtName):
         if info.area_info[info_key] == districtName:
             district_label = info_key
 
-    sql = "SELECT dealTime2,dealPrice2,dealUnitPrice2,hangoutPrice2 FROM housessaled_table WHERE housingEstate LIKE '%{}'".format(district_label)
+    sql = "SELECT dealTime2,dealPrice2,dealUnitPrice2,hangoutPrice2 FROM housessaled_table WHERE housingEstate LIKE '%{}'".format(
+        district_label)
     try:
         cur.execute(sql)
     except:
@@ -46,7 +47,7 @@ def saledHouseInfo(countyName, districtName):
             hangoutprice.append(round(float(element[1]), 2))
         else:
             hangoutprice.append(round(float(element[3]), 2))
-    dict = {'dealtime': dealtime, 'dealprice': dealprice, 'dealunitprice': dealunitprice,'hangoutprice':hangoutprice}
+    dict = {'dealtime': dealtime, 'dealprice': dealprice, 'dealunitprice': dealunitprice, 'hangoutprice': hangoutprice}
     dtf = pd.DataFrame(dict)
     dtf1 = dtf.groupby('dealtime').mean().reset_index()
     dtf1 = dtf1.sort_values(axis=0, by=['dealtime'])
@@ -71,11 +72,29 @@ def saledHouseInfo(countyName, districtName):
     return list_return
 
 
+def dealtime_and_price(countyName, districtName):
+    L = saledHouseInfo(countyName, districtName)
+    list_return = []
+    for element in L:
+        list_return.append([element[0], element[1], element[3], element[4]])
+    print(list_return)
+    return list_return
+
+
+def dealtime_and_price2(communityName):
+    L = saledHouseInfo(communityName)
+    list_return = []
+    for element in L:
+        list_return.append([element[0], element[2]])
+    print(list_return)
+    return list_return
+
+
 # 按地区：某地区各小区的信息，多加了挂牌价hangoutPrice，差价
-def saledHouseChart3(countyName,districtName):
+def saledHouseChart3(countyName, districtName):
     district_label = ""
     for info_key in info.area_info.keys():
-        if  info.area_info[info_key]== districtName:
+        if info.area_info[info_key] == districtName:
             district_label = info_key
     sql = "SELECT communityName2,AVG(dealPrice2),AVG(dealUnitPrice2),AVG(hangoutPrice2),AVG(houseArea2), COUNT(communityName2) FROM housessaled_table " \
           "WHERE housingEstate LIKE '%{}' GROUP BY communityName2".format(district_label)
@@ -89,17 +108,16 @@ def saledHouseChart3(countyName,districtName):
         dic['communityName'] = element[0]
         dic['countyName'] = countyName
         dic['districtName'] = districtName
-        dic['avgdealprice'] = str(round(element[1],2))+ "万元"
-        dic['avgdealunitprice'] = str(round(element[2],2)) + "元/平方米"
+        dic['avgdealprice'] = str(round(element[1], 2)) + "万元"
+        dic['avgdealunitprice'] = str(round(element[2], 2)) + "元/平方米"
         if element[3] == -1:
-            dic['avghangoutprice'] = str(round(element[1], 2))+ "万元"
-            dic['decreaseprice'] = str(round(0 , 2))+ "万元"
+            dic['avghangoutprice'] = str(round(element[1], 2)) + "万元"
+            dic['decreaseprice'] = str(round(0, 2)) + "万元"
         else:
             dic['avghangoutprice'] = str(round(element[3], 2)) + "万元"
-            dic['decreaseprice'] = str(round(element[3]-element[1], 2))+ "万元"
-        dic['avgarea'] = str(round(element[4],2)) + "平方米"
+            dic['decreaseprice'] = str(round(element[3] - element[1], 2)) + "万元"
+        dic['avgarea'] = str(round(element[4], 2)) + "平方米"
         dic['num'] = str(element[5]) + "套"
         list_return.append(dic)
     print(list_return)
     return list_return
-

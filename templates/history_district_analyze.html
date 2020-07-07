@@ -89,7 +89,7 @@
 				<header class="tab-head">
 					<ul class="nav nav-tabs">
                         <li class="active">
-                            <a data-toggle="tab" href="#morris" class="panel-heading">历史成交房屋信息-地区分析</a>
+                            <a data-toggle="tab" href="#morris" class="panel-heading">成交房屋信息-地区分析</a>
                         </li>
 					</ul>
 				</header>
@@ -99,54 +99,39 @@
 						<div class="tab-pane active" id="morris">
 
 							<div class="row">
-                                <div class="col-sm-6">
-
-
-                                    <section class="panel">
-                                        <header class="panel-heading">
-                                            成交时间——均价
-                                        </header>
-                                        <div class="panel-body">
-                                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                                        <center>
-                                            <div id="main" style="width: 600px;height:400px;"class="graph"></div>
-                                        </center>
-                                            <script type="text/javascript" charset="utf-8">
-                                                    var data = {{ data|safe }};
-                                                </script>
-                                            <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
-                                            </div>
-                                    </section>
-                                </div>
-
-                                <div class="col-sm-6">
-
-
-                                    <section class="panel">
-                                        <header class="panel-heading">
-                                            成交时间——总价
-                                        </header>
-                                        <div class="panel-body">
-                                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                                        <center>
-                                            <div id="main" style="width: 600px;height:400px;"class="graph"></div>
-                                        </center>
-                                            <script type="text/javascript" charset="utf-8">
-                                                    var data = {{ data|safe }};
-                                                </script>
-                                            <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
-                                            </div>
-                                    </section>
-                                </div>
+                                <section class="panel">
+									<header class="panel-heading">
+										<center>{{ communityName }}地区在售房源分析</center>
+									</header>
+									<div class="panel-body">
+									<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+									    <div id="graph1" style="width: 100%;height:500px;"class="graph"></div>
+                                    </div>
+								</section>
+                            </div>
+                            <div class="row">
+                                <section class="panel">
+									<header class="panel-heading">
+										<center>{{ communityName }}地区在售房源分析</center>
+									</header>
+									<div class="panel-body">
+									<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+									    <div id="graph2" style="width: 100%;height:500px;"class="graph"></div>
+                                    </div>
+								</section>
 							</div>
-
+                            <script>
+                                    var graph1_data = {{ graph1_data | safe }};
+                                    var graph2_data = {{ graph2_data | safe }};
+                            </script>
+                            <script src="{{ url_for('static', filename = 'SaledDistrictAnalysis.js') }}"></script>
 
 							<!-- page start-->
 							<div class="row">
 								<div class="col-lg-12">
 									<section class="panel">
 										<header class="panel-heading">
-											符合条件的房屋
+											{{ communityName }}地区 小区列表
 										</header>
 										<table class="table table-striped border-top" id="sample_1">
 											<thead>
@@ -156,17 +141,10 @@
                                                     <th>所属区域</th>
                                                     <th>成交总价平均</th>
                                                     <th>成交均价平均</th>
+                                                    <th>挂牌总价平均</th>
+                                                    <th>交易差价平均</th>
                                                     <th>平均面积</th>
                                                     <th>成交房屋总数</th>
-                                                    <!--
-													<th style="width:8px;"></th>
-
-													<th>小区名称</th>
-													<th class="hidden-phone">所属区县</th>
-													<th class="hidden-phone">建筑年代</th>
-													<th class="hidden-phone">物业费(m<sup>2</sup>)</th>
-													<th class="hidden-phone">物业公司</th>
-													<th class="hidden-phone">开发商</th>-->
 												</tr>
 											</thead>
 											<tbody>
@@ -175,8 +153,10 @@
                                                 <td>{{ item['communityName'] | safe }}</td>
                                                 <td>{{ item['countyName'] | safe }}</td>
                                                 <td class="hidden-phone">{{ item['districtName'] | safe}}</td>
-                                                <td class="hidden-phone">{{ item['avgprice'] | safe}}</td>
-                                                <td class="hidden-phone">{{ item['avgunitprice'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['avgdealprice'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['avgdealunitprice'] | safe}}</td>
+                                                    <td class="hidden-phone">{{ item['avghangoutprice'] | safe}}</td>
+                                                <td class="hidden-phone">{{ item['decreaseprice'] | safe}}</td>
                                                 <td class="hidden-phone">{{ item['avgarea'] | safe}}</td>
                                                 <td class="hidden-phone">{{ item['num'] | safe}}</td>
                                             </tr>

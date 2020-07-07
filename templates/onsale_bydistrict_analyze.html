@@ -99,21 +99,17 @@
 
 								<section class="panel">
 									<header class="panel-heading">
-										<center>地区在售房源分析</center>
+										<center>{{ communityName }}地区 在售房源分析</center>
 									</header>
 									<div class="panel-body">
 									<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-									<center>
-									    <div id="graph_display" style="width: 1200px;height:500px;"class="graph"></div>
-									</center>
-									    <script type="text/javascript" charset="utf-8">
+									    <div id="graph_display" style="width: 100%;height:500px;"class="graph"></div>
+                                    </div>
+								</section>
+								 <script type="text/javascript" charset="utf-8">
                                                 var data = {{ data|safe }};
                                             </script>
-                                        <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
-										</div>
-								</section>
-								
-								
+                                <script src="{{ url_for('static', filename = 'SalingAnalysisByDistrict.js') }}"></script>
 							</div>
 							
 							
@@ -122,7 +118,7 @@
 								<div class="col-lg-12">
 									<section class="panel">
 										<header class="panel-heading">
-											符合条件的房屋
+                                            {{ communityName }}地区 小区列表
 										</header>
 										<table class="table table-striped border-top" id="sample_1">
 											<thead>

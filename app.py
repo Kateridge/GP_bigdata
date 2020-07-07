@@ -2,6 +2,7 @@ import pymysql
 from flask import Flask, render_template, send_file, request
 import saledHousePriceAnalysis as saled
 import saledHouseSourceAnalysis as saled_src
+import saledBydistrict as saled_district
 import salingBycommunity as saling
 import salingBydistrict as saling2
 
@@ -18,9 +19,22 @@ def jump_home1():
 def jump_home2():
     return render_template('index.html')
 
+
 @app.route('/history_district.html')
 def jump_history_district():
     return render_template('history_district.html')
+
+
+@app.route('/history_district_analyze.html')
+def jump_history_district2():
+    para = request.args
+    graph1_data = saled_district.dealtime_and_price(para['district_name'], para['area_name'])
+    graph2_data = saled_district.dealtime_and_price(para['district_name'], para['area_name'])
+    data_table = saled_district.saledHouseChart3(para['district_name'], para['area_name'])
+    communityName = para['area_name']
+    return render_template('history_district_analyze.html', graph1_data=graph1_data, graph2_data=graph2_data,
+                           data_table=data_table, communityName=communityName)
+
 
 @app.route('/history_price.html')
 def jump_history_price1():
@@ -35,6 +49,7 @@ def jump_history_source1():
 @app.route('/history_price_analyze.html', methods=['POST'])
 def jump_history_price2():
     para = request.form
+    communityName = para['community_name']
     # x轴成交时间
     if para['x_value'] == 'Dealdate' and para['y_value'] == 'AveragePrice':
         data = saled.dealTime_dealUnitPrice(para['community_name'])
@@ -135,7 +150,8 @@ def jump_history_price2():
         data = saled.Issubway_dealNum(para['community_name'])
         data_table = saled.saledHouseChart(para['community_name'])
         flag = 24
-    return render_template('history_price_analyze.html', data=data, flag=flag, data_table=data_table)
+    return render_template('history_price_analyze.html', data=data, flag=flag, data_table=data_table,
+                           communityName=communityName)
 
 
 @app.route('/history_source_analyze.html', methods=['POST'])
@@ -146,8 +162,9 @@ def jump_history_source2():
     graph3_data = saled_src.saledDealUnitPrice(para['community_name'])
     graph4_data = saled_src.saledHouseArea(para['community_name'])
     data_table = saled_src.saleHouseChart2(para['community_name'])
+    communityName = para['community_name']
     return render_template('history_source_analyze.html', graph1_data=graph1_data, graph2_data=graph2_data,
-                           graph3_data=graph3_data, graph4_data=graph4_data, data_table=data_table)
+                           graph3_data=graph3_data, graph4_data=graph4_data, data_table=data_table, communityName=communityName)
 
 
 @app.route('/onsale_bycommunity.html')
@@ -172,10 +189,11 @@ def jump_onsale_community2():
     graph7_data = saling.hangoutTime_unitPrice(para['community_name'])
     graph8_data = saling.hangoutTime_price(para['community_name'])
     data_table = saling.salingHouseChart(para['community_name'])
+    communityName = para['community_name']
     return render_template('onsale_bycommunity_analyze.html', graph1_data=graph1_data, graph2_data=graph2_data,
                            graph3_data=graph3_data, graph4_data=graph4_data, graph5_data=graph5_data,
                            graph6_data=graph6_data, graph7_data=graph7_data, graph8_data=graph8_data,
-                           data_table=data_table)
+                           data_table=data_table, communityName=communityName)
 
 
 @app.route('/onsale_bydistrict_analyze.html', methods=['POST'])
@@ -183,22 +201,13 @@ def jump_onsale_district2():
     para = request.form
     data = saling2.salingHouseInfo(para['district_name'], para['area_name'])
     data_table = saling2.salingHouseChart2(para['district_name'], para['area_name'])
-    return render_template('onsale_bydistrict_analyze.html', data=data, data_table=data_table)
+    communityName = para['area_name']
+    return render_template('onsale_bydistrict_analyze.html', data=data, data_table=data_table, communityName=communityName)
 
 
 @app.route('/bdmap')
 def bdmap():
     return render_template('baidumap.html')
-
-
-@app.route('/graph2')
-def graph2():
-    return render_template('graph.html')
-
-
-@app.route('/graph3')
-def graph3():
-    return render_template('graph.html')
 
 
 if __name__ == '__main__':
