@@ -8,9 +8,6 @@ var myChart7 = echarts.init(document.getElementById("graph7"));
 var myChart8 = echarts.init(document.getElementById("graph8"));
 
 var option1 = {
-    title: {
-        text: '户型比例'
-    },
     series:[{
         name: '户型比例',
         type: 'pie',
@@ -19,9 +16,6 @@ var option1 = {
     }]
 };
 var option2 = {
-    title: {
-        text: '装修比例'
-    },
     series:[{
         name: '装修比例',
         type: 'pie',
@@ -30,9 +24,6 @@ var option2 = {
     }]
 };
 var option3 = {
-    title: {
-        text: '面积比例'
-    },
     series:[{
         name: '面积比例',
         type: 'pie',
@@ -41,9 +32,6 @@ var option3 = {
     }]
 };
 var option4 = {
-    title: {
-        text: '均价比例'
-    },
     series:[{
         name: '均价比例',
         type: 'pie',
@@ -52,9 +40,6 @@ var option4 = {
     }]
 };
 var option5 = {
-    title: {
-        text: '总价比例'
-    },
     series:[{
         name: '总价比例',
         type: 'pie',
@@ -63,9 +48,6 @@ var option5 = {
     }]
 };
 var option6 = {
-    title: {
-        text: '朝向比例'
-    },
     series:[{
         name: '朝向比例',
         type: 'pie',
@@ -74,9 +56,6 @@ var option6 = {
     }]
 };
 var option7 = {
-    title: {
-        text: '时间-均价'
-    },
     tooltip: {},
     legend: {
         data:['均价']
@@ -99,9 +78,6 @@ var option7 = {
     ],
 };
 var option8 = {
-    title: {
-        text: '时间 - 总价'
-    },
     tooltip: {},
     legend: {
         data:['总价']

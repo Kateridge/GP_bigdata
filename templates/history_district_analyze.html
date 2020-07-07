@@ -150,7 +150,7 @@
 											<tbody>
                                             {% for item in data_table %}
                                                 <tr class="odd gradeX">
-                                                <td>{{ item['communityName'] | safe }}</td>
+                                                    <td><a href="history_source_analyze.html?community_name={{ item['communityName'] | safe }}"> {{ item['communityName'] | safe }}</a></td>
                                                 <td>{{ item['countyName'] | safe }}</td>
                                                 <td class="hidden-phone">{{ item['districtName'] | safe}}</td>
                                                 <td class="hidden-phone">{{ item['avgdealprice'] | safe}}</td>

@@ -154,9 +154,9 @@ def jump_history_price2():
                            communityName=communityName)
 
 
-@app.route('/history_source_analyze.html', methods=['POST'])
+@app.route('/history_source_analyze.html', methods=['GET'])
 def jump_history_source2():
-    para = request.form
+    para = request.args
     graph1_data = saled_src.saledHouseModel(para['community_name'])
     graph2_data = saled_src.saledDealPrice(para['community_name'])
     graph3_data = saled_src.saledDealUnitPrice(para['community_name'])
