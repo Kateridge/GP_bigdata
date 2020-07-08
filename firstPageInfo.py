@@ -170,6 +170,7 @@ def CQ_Saling_Decoration():
     print(list_return)
     return list_return
 
+
 # 10.扇形图——成交房屋装修情况
 def CQ_Saled_Decoration():
     sql = "SELECT * FROM saled_decoration"
@@ -185,6 +186,3 @@ def CQ_Saled_Decoration():
         list_return.append(dic)
     print(list_return)
     return list_return
-
-CQ_Saling_Decoration()
-CQ_Saled_Decoration()

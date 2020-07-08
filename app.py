@@ -21,10 +21,13 @@ def jump_home1():
     graph4_data = index.CQ_Saling_HouseModel()
     graph5_data = index.CQ_Saling_HouseFaced()
     graph6_data = index.CQ_IsSubway()
+    graph7_data = index.CQ_Saled_Decoration()
+    graph8_data = index.CQ_Saling_Decoration()
     return render_template('index.html', graph1_data=graph1_data, graph2_data=graph2_data,
                            top5_num=top5_num, top5_unitprice=top5_unitprice,
                            graph5_data=graph5_data, graph6_data=graph6_data,
-                           graph3_data=graph3_data, graph4_data=graph4_data)
+                           graph3_data=graph3_data, graph4_data=graph4_data,
+                           graph7_data=graph7_data, graph8_data=graph8_data)
 
 
 @app.route('/index.html')
@@ -37,10 +40,13 @@ def jump_home2():
     graph4_data = index.CQ_Saling_HouseModel()
     graph5_data = index.CQ_Saling_HouseFaced()
     graph6_data = index.CQ_IsSubway()
+    graph7_data = index.CQ_Saled_Decoration()
+    graph8_data = index.CQ_Saling_Decoration()
     return render_template('index.html', graph1_data=graph1_data, graph2_data=graph2_data,
                            top5_num=top5_num, top5_unitprice=top5_unitprice,
                            graph5_data=graph5_data, graph6_data=graph6_data,
-                           graph3_data=graph3_data, graph4_data=graph4_data)
+                           graph3_data=graph3_data, graph4_data=graph4_data,
+                           graph7_data=graph7_data, graph8_data=graph8_data)
 
 
 @app.route('/history_district.html')
@@ -227,10 +233,6 @@ def jump_onsale_district2():
     communityName = para['area_name']
     return render_template('onsale_bydistrict_analyze.html', data=data, data_table=data_table, communityName=communityName)
 
-
-@app.route('/bdmap')
-def bdmap():
-    return render_template('baidumap.html')
 
 
 if __name__ == '__main__':

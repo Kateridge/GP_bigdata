@@ -208,6 +208,17 @@
                             <section class="panel">
 								<center>
 									<header class="panel-heading">
+										成交房屋主要装修
+									</header>
+								</center>
+								<div id="graph7" style="height:300px">
+								</div>
+
+							</section>
+
+                            <section class="panel">
+								<center>
+									<header class="panel-heading">
 										在售房屋主要朝向
 									</header>
 								</center>
@@ -225,6 +236,16 @@
 									</header>
 								</center>
 								<div id="graph4" style="height:300px">
+								</div>
+
+							</section>
+                            <section class="panel">
+								<center>
+									<header class="panel-heading">
+										在售房屋主要装修
+									</header>
+								</center>
+								<div id="graph8" style="height:300px">
 								</div>
 
 							</section>
@@ -437,173 +458,6 @@
 							<!--work progress end-->
 						</div>
 					</div>
-{#					<div class="row">#}
-{#						<div class="col-lg-4">#}
-{#							<!--work progress start-->#}
-{#							<section class="panel">#}
-{#								<center>#}
-{#									<header class="panel-heading">#}
-{#										在售房屋主要朝向#}
-{#									</header>#}
-{#								</center>#}
-{#								<div id="graph5" style="height:300px">#}
-{#								</div>#}
-{##}
-{#							</section>#}
-{#							<!--work progress end-->#}
-{#						</div>#}
-{#						<div class="col-lg-4">#}
-{#							<!--work progress start-->#}
-{#							<section class="panel">#}
-{#								<center>#}
-{#									<header class="panel-heading">#}
-{#										房屋临近地铁情况#}
-{#									</header>#}
-{#								</center>#}
-{#								<div id="graph6" style="height:300px">#}
-{#								</div>#}
-{##}
-{#							</section>#}
-{#							<!--work progress end-->#}
-{#						</div>#}
-{#						<div class="col-lg-4">#}
-{#							<!--work progress start-->#}
-{#                            <section class="panel">#}
-{##}
-{#								<center>#}
-{#									<header class="panel-heading">#}
-{#										地区在售均价TOP5#}
-{#									</header>#}
-{#								</center>#}
-{##}
-{#								<table class="table table-hover personal-task">#}
-{#									<tbody>#}
-{#										<tr>#}
-{#											<td>1</td>#}
-{#											<td>#}
-{#                                                {{  top5_unitprice[0][0] }}#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-important">{{  top5_unitprice[0][1] }}元/m2</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>2</td>#}
-{#											<td>#}
-{#												{{  top5_unitprice[1][0] }}#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-success">{{  top5_unitprice[1][1] }}元/m2</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>3</td>#}
-{#											<td>#}
-{#												{{  top5_unitprice[2][0] }}#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-info">{{  top5_unitprice[2][1] }}元/m2</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>4</td>#}
-{#											<td>#}
-{#												{{  top5_unitprice[3][0] }}#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-warning">{{  top5_unitprice[3][1] }}元/m2</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>5</td>#}
-{#											<td>#}
-{#												{{  top5_unitprice[4][0] }}#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-primary">{{  top5_unitprice[4][1] }}元/m2</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#									</tbody>#}
-{#								</table>#}
-{#							</section>#}
-{#							<!--work progress end-->#}
-{#						</div>#}
-{#					</div>#}
-{#                    <div class="row">#}
-{#                        <div class="col-lg-4  pull-right">#}
-{#                            <section class="panel">#}
-{##}
-{#								<center>#}
-{#									<header class="panel-heading">#}
-{#										开发商TOP5#}
-{#									</header>#}
-{#								</center>#}
-{##}
-{#								<table class="table table-hover personal-task">#}
-{#									<tbody>#}
-{#										<tr>#}
-{#											<td>1</td>#}
-{#											<td>#}
-{#												龙湖#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-important">30%</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>2</td>#}
-{#											<td>#}
-{#												金科#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-success">25%</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>3</td>#}
-{#											<td>#}
-{#												恒大#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-info">19%</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>4</td>#}
-{#											<td>#}
-{#												融创#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-warning">14%</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#										<tr>#}
-{#											<td>5</td>#}
-{#											<td>#}
-{#												万科#}
-{#											</td>#}
-{#											<td>#}
-{#												<span class="badge bg-primary">12%</span>#}
-{#											</td>#}
-{##}
-{#										</tr>#}
-{#									</tbody>#}
-{#								</table>#}
-{#							</section>#}
-{#                        </div>#}
-{#                    </div>#}
-
-
-
 				</section>
 			</section>
 			<!--main content end-->
@@ -615,6 +469,8 @@
             var graph4_data={{ graph4_data | safe}};
             var graph5_data={{ graph5_data | safe}};
             var graph6_data={{ graph6_data | safe}};
+            var graph7_data={{ graph7_data | safe}};
+            var graph8_data={{ graph8_data | safe}};
         </script>
         <script src="{{ url_for('static', filename = 'index_graph.js') }}"></script>
 		<!-- js placed at the end of the document so the pages load faster -->

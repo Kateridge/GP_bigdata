@@ -4,6 +4,8 @@ var myChart3 = echarts.init(document.getElementById('graph3'));
 var myChart4 = echarts.init(document.getElementById('graph4'));
 var myChart5 = echarts.init(document.getElementById('graph5'));
 var myChart6 = echarts.init(document.getElementById('graph6'));
+var myChart7 = echarts.init(document.getElementById('graph7'));
+var myChart8 = echarts.init(document.getElementById('graph8'));
 
 var option1 = {
     tooltip: {},
@@ -180,9 +182,70 @@ var option6 = {
     ]
 };
 
+var option7 = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'装修比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph7_data
+        }
+    ]
+};
+
+var option8 = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    series: [
+        {
+            name:'装修比例',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: true,
+            label: {
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '16',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data: graph8_data
+        }
+    ]
+};
 myChart1.setOption(option1);
 myChart2.setOption(option2);
 myChart3.setOption(option3);
 myChart4.setOption(option4);
 myChart5.setOption(option5);
 myChart6.setOption(option6);
+myChart7.setOption(option7);
+myChart8.setOption(option8);
