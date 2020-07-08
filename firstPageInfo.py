@@ -152,3 +152,39 @@ def CQ_IsSubway():
     list_return.append({'value': isnotcount, 'name': '附近无地铁'})
     print(list_return)
     return list_return
+
+
+# 9.扇形图——在售房屋装修情况
+def CQ_Saling_Decoration():
+    sql = "SELECT * FROM saling_decoration"
+    try:
+        curcompute.execute(sql)
+    except:
+        print("查询失败")
+    list_return = []
+    for element in curcompute:
+        dic = {}
+        dic['value'] = int(element[2])
+        dic['name'] = element[1]
+        list_return.append(dic)
+    print(list_return)
+    return list_return
+
+# 10.扇形图——成交房屋装修情况
+def CQ_Saled_Decoration():
+    sql = "SELECT * FROM saled_decoration"
+    try:
+        curcompute.execute(sql)
+    except:
+        print("查询失败")
+    list_return = []
+    for element in curcompute:
+        dic = {}
+        dic['value'] = int(element[2])
+        dic['name'] = element[1]
+        list_return.append(dic)
+    print(list_return)
+    return list_return
+
+CQ_Saling_Decoration()
+CQ_Saled_Decoration()
