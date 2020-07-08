@@ -5,20 +5,12 @@
     <script src="http://api.map.baidu.com/api?v=2.0&ak=BmV6YAWHXiiG96lsWkwwSFXPYajfYopy"></script>
     <script src="{{ url_for('static', filename = 'echarts.js') }}"></script>
     <script src="{{ url_for('static', filename = 'bmap.js') }}"></script>
+    <script src="../static/js/jquery.js"></script>
     <title>Title</title>
-    <style>
-        .BMap_cpyCtrl {
-            display:none;
-        }
-
-        .anchorBL{
-            display:none;
-        }
-    </style>
 </head>
 <body>
 <div id="main" style="width: 1980px;height:1200px"></div>
     <div id="main" ></div>
-    <script src="{{ url_for('static', filename = 'mybdmap.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'index_map.js') }}"></script>
 </body>
 </html>

@@ -81,8 +81,8 @@ def dealtime_and_price(countyName, districtName):
     return list_return
 
 
-def dealtime_and_price2(communityName):
-    L = saledHouseInfo(communityName)
+def dealtime_and_price2(countyName, districtName):
+    L = saledHouseInfo(countyName, districtName)
     list_return = []
     for element in L:
         list_return.append([element[0], element[2]])

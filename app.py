@@ -5,6 +5,7 @@ import saledHouseSourceAnalysis as saled_src
 import saledBydistrict as saled_district
 import salingBycommunity as saling
 import salingBydistrict as saling2
+import firstPageInfo as index
 
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
@@ -12,12 +13,34 @@ app.config["JSON_AS_ASCII"] = False
 
 @app.route('/')
 def jump_home1():
-    return render_template('index.html')
+    graph1_data = index.CQ_DealTime_UnitPrice()
+    graph2_data = index.CQ_DealTime_TotalPrice()
+    top5_num = index.Saled_TopFive_District_By_Number()
+    top5_unitprice = index.Saling_TopFive_District_By_Unitprice()
+    graph3_data = index.CQ_Saled_HouseModel()
+    graph4_data = index.CQ_Saling_HouseModel()
+    graph5_data = index.CQ_Saling_HouseFaced()
+    graph6_data = index.CQ_IsSubway()
+    return render_template('index.html', graph1_data=graph1_data, graph2_data=graph2_data,
+                           top5_num=top5_num, top5_unitprice=top5_unitprice,
+                           graph5_data=graph5_data, graph6_data=graph6_data,
+                           graph3_data=graph3_data, graph4_data=graph4_data)
 
 
 @app.route('/index.html')
 def jump_home2():
-    return render_template('index.html')
+    graph1_data = index.CQ_DealTime_UnitPrice()
+    graph2_data = index.CQ_DealTime_TotalPrice()
+    top5_num = index.Saled_TopFive_District_By_Number()
+    top5_unitprice = index.Saling_TopFive_District_By_Unitprice()
+    graph3_data = index.CQ_Saled_HouseModel()
+    graph4_data = index.CQ_Saling_HouseModel()
+    graph5_data = index.CQ_Saling_HouseFaced()
+    graph6_data = index.CQ_IsSubway()
+    return render_template('index.html', graph1_data=graph1_data, graph2_data=graph2_data,
+                           top5_num=top5_num, top5_unitprice=top5_unitprice,
+                           graph5_data=graph5_data, graph6_data=graph6_data,
+                           graph3_data=graph3_data, graph4_data=graph4_data)
 
 
 @app.route('/history_district.html')
@@ -29,7 +52,7 @@ def jump_history_district():
 def jump_history_district2():
     para = request.args
     graph1_data = saled_district.dealtime_and_price(para['district_name'], para['area_name'])
-    graph2_data = saled_district.dealtime_and_price(para['district_name'], para['area_name'])
+    graph2_data = saled_district.dealtime_and_price2(para['district_name'], para['area_name'])
     data_table = saled_district.saledHouseChart3(para['district_name'], para['area_name'])
     communityName = para['area_name']
     return render_template('history_district_analyze.html', graph1_data=graph1_data, graph2_data=graph2_data,
