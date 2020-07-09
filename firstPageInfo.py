@@ -399,5 +399,3 @@ def Merge_HouseFloor():
         list_return.append(dic)
     print(list_return)
     return list_return
-
-CQ_DealTime_TotalPrice()
