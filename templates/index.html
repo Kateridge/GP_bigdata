@@ -90,19 +90,19 @@
 									<i class="icon-cny"></i>
 								</div>
 								<div class="value">
-									<h1>12420.33</h1>
-									<p>近半年成交均价</p>
+									<h1>13211.63</h1>
+									<p>在售均价</p>
 								</div>
 							</section>
 						</div>
 						<div class="col-lg-3 col-sm-6">
 							<section class="panel">
 								<div class="symbol red">
-									<i class="icon-cny"></i>
+									<i class="icon-sun"></i>
 								</div>
 								<div class="value">
-									<h1>13211.63</h1>
-									<p>在售均价</p>
+									<h1>80.51</h1>
+									<p>成交周期</p>
 								</div>
 							</section>
 						</div>
@@ -138,7 +138,7 @@
 								<div class="panel-body chart-texture">
 									<div class="chart" >
 										<div class="heading">
-											<span>重庆市房屋交易数据分布图</span>
+                                            <center><span class="panel-heading">重庆市房屋交易数据分布图</span></center>
 										</div>
 										<!--<div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1"
 										 data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff"
@@ -165,7 +165,7 @@
 								<div class="panel-body chart-texture">
 									<div class="chart" >
 										<div class="heading">
-											<span>重庆市房屋历史成交均价折线图</span>
+                                            <center><span class="panel-heading">重庆市房屋历史成交均价折线图</span></center>
 										</div>
 										<!--<div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1"
 										 data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff"
@@ -181,7 +181,7 @@
 								<div class="panel-body">
 									<div class="chart">
 										<div class="heading">
-											<span>重庆市房屋历史成交总价折线图</span>
+                                            <center><span class="panel-heading">重庆市房屋历史成交总价折线图</span></center>
 										</div>
 									</div>
 								</div>
@@ -197,7 +197,7 @@
 							<section class="panel">
 								<center>
 									<header class="panel-heading">
-										成交房屋主要户型
+										房屋主要户型
 									</header>
 								</center>
 								<div id="graph3" style="height:300px">
@@ -208,7 +208,7 @@
                             <section class="panel">
 								<center>
 									<header class="panel-heading">
-										成交房屋主要装修
+										房屋主要楼层
 									</header>
 								</center>
 								<div id="graph7" style="height:300px">
@@ -232,7 +232,7 @@
 							<section class="panel">
 								<center>
 									<header class="panel-heading">
-										在售房屋主要户型
+										房屋主要装修
 									</header>
 								</center>
 								<div id="graph4" style="height:300px">
@@ -242,7 +242,7 @@
                             <section class="panel">
 								<center>
 									<header class="panel-heading">
-										在售房屋主要装修
+										房屋主要用途
 									</header>
 								</center>
 								<div id="graph8" style="height:300px">
@@ -262,6 +262,16 @@
 							</section>
 						</div>
 						<div class="col-lg-4">
+                            <div class="panel terques-chart">
+								<div class="panel-body">
+									<div class="chart">
+										<div class="heading">
+                                            <center><span class="panel-heading">重庆市房屋历史挂牌总价折线图</span></center>
+										</div>
+									</div>
+								</div>
+								<div class="chart-tittle" id="graph9" style="height:250px;background-color: white"></div>
+							</div>
 							<!--work progress start-->
                             <div class="panel right-table">
 								<!--work progress start-->
@@ -471,6 +481,7 @@
             var graph6_data={{ graph6_data | safe}};
             var graph7_data={{ graph7_data | safe}};
             var graph8_data={{ graph8_data | safe}};
+            var graph9_data={{ graph9_data | safe}};
         </script>
         <script src="{{ url_for('static', filename = 'index_graph.js') }}"></script>
 		<!-- js placed at the end of the document so the pages load faster -->

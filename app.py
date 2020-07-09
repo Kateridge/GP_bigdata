@@ -17,17 +17,19 @@ def jump_home1():
     graph2_data = index.CQ_DealTime_TotalPrice()
     top5_num = index.Saled_TopFive_District_By_Number()
     top5_unitprice = index.Saling_TopFive_District_By_Unitprice()
-    graph3_data = index.CQ_Saled_HouseModel()
-    graph4_data = index.CQ_Saling_HouseModel()
+    graph3_data = index.Merge_HouseModel()
+    graph4_data = index.Merge_HouseDecoration()
     graph5_data = index.CQ_Saling_HouseFaced()
     graph6_data = index.CQ_IsSubway()
-    graph7_data = index.CQ_Saled_Decoration()
-    graph8_data = index.CQ_Saling_Decoration()
+    graph7_data = index.CQ_Saling_Floor()
+    graph8_data = index.Merge_HouseUsage()
+    graph9_data = index.CQ_DealTime_TotalPrice2()
     return render_template('index.html', graph1_data=graph1_data, graph2_data=graph2_data,
                            top5_num=top5_num, top5_unitprice=top5_unitprice,
                            graph5_data=graph5_data, graph6_data=graph6_data,
                            graph3_data=graph3_data, graph4_data=graph4_data,
-                           graph7_data=graph7_data, graph8_data=graph8_data)
+                           graph7_data=graph7_data, graph8_data=graph8_data,
+                           graph9_data=graph9_data)
 
 
 @app.route('/index.html')
@@ -42,11 +44,13 @@ def jump_home2():
     graph6_data = index.CQ_IsSubway()
     graph7_data = index.CQ_Saled_Decoration()
     graph8_data = index.CQ_Saling_Decoration()
+    graph9_data = index.CQ_DealTime_TotalPrice2()
     return render_template('index.html', graph1_data=graph1_data, graph2_data=graph2_data,
                            top5_num=top5_num, top5_unitprice=top5_unitprice,
                            graph5_data=graph5_data, graph6_data=graph6_data,
                            graph3_data=graph3_data, graph4_data=graph4_data,
-                           graph7_data=graph7_data, graph8_data=graph8_data)
+                           graph7_data=graph7_data, graph8_data=graph8_data,
+                           graph9_data=graph9_data)
 
 
 @app.route('/history_district.html')

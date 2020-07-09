@@ -2,13 +2,6 @@ import pymysql,csv,re
 
 # user = input("请输入数据库连接用户名：")
 # password = input("请输入数据库连接密码：")
-try:
-    conn = pymysql.connect(host='127.0.0.1', user='root', passwd='123456', db='lianjiaTotal', port=3307)
-    cur = conn.cursor()
-    print("登录数据库成功！！！")
-except Exception:
-    print("登录数据库出错，请检查用户名和密码！！！")
-
 
 county = ['jiangbei', 'yubei', 'nanan', 'banan', 'shapingba', 'jiulongpo', 'yuzhong', 'dadukou', 'jiangjing', 'beibei', 'kaizhouqu', 'wushanxian1', 'wuxixian', 'xiushantujiazumiaozuzizhixian', 'youyangtujiazumiaozuzizhixian', 'rongchangqu', 'pengshuimiaozutujiazuzizhixian', 'zhongxian', 'fengjiexian', 'dianjiangxian', 'chengkouxian', 'tongliang', 'bishan', 'hechuang', 'changshou1', 'wanzhou', 'fuling']
 district = {
